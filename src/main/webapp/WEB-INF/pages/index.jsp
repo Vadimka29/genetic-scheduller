@@ -4,6 +4,10 @@
     <title></title>
 </head>
 <body>
-    Hello world, ${name}
+    <form id="login-form" action="j_spring_security_check" method="POST">
+        <input type="text" id="login" name="j_username" placeholder="login">
+        <input type="password" id="password" name="j_password" placeholder="password">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

@@ -8,9 +8,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Home {
 
-    @RequestMapping(value = {"/", "/home"})
-    public String getHome(@RequestParam(name = "name", defaultValue = "Vadym")String name, Model model) {
-        model.addAttribute("name", name);
+    @RequestMapping(value = {"/", "/index", "/home"})
+    public String getHome() {
         return "index";
+    }
+    @RequestMapping(value = "/admin")
+    public String getAdminPage(){
+        return "/admin/admin-page";
+    }
+
+    @RequestMapping(value = "/user")
+    public String getUserPage(){
+        return "user";
+    }
+    @RequestMapping(value = "/error")
+    public String getErrorPage(){
+        return "error";
     }
 }
