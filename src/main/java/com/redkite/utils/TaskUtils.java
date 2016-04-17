@@ -1,7 +1,7 @@
-package com.readkite.utils;
+package com.redkite.utils;
 
 
-import com.readkite.algorithm.model.Task;
+import com.redkite.algorithm.model.Task;
 
 import java.util.List;
 

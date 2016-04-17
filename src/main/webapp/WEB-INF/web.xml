@@ -3,9 +3,13 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/application-security.xml</param-value>
+        <param-value>
+            /WEB-INF/context/application-security.xml
+            classpath:persistence.xml
+        </param-value>
     </context-param>
-    <!-- Creates the Spring Container shared by all Servlets and Filters -->
+
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -15,7 +19,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>WEB-INF/spring/scheduler-servlet.xml</param-value>
+            <param-value>WEB-INF/context/scheduler-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

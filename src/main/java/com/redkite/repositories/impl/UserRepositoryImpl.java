@@ -1,7 +1,7 @@
-package com.readkite.repositories.impl;
+package com.redkite.repositories.impl;
 
-import com.readkite.entities.UserEntity;
-import com.readkite.repositories.UserRepository;
+import com.redkite.entities.User;
+import com.redkite.repositories.UserRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,15 +11,15 @@ import org.springframework.stereotype.Repository;
 public class UserRepositoryImpl implements UserRepository {
 
     @Override
-    public UserEntity findByLogin(String login) {
+    public User findByLogin(String login) {
         if("admin".equals(login)){
-            UserEntity admin = new UserEntity();
+            User admin = new User();
             admin.setLogin("admin");
             admin.setPassword("admin");
             return admin;
         }
         if("user".equals(login)){
-            UserEntity user = new UserEntity();
+            User user = new User();
             user.setLogin("user");
             user.setPassword("user");
             return user;

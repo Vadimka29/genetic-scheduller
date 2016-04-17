@@ -1,13 +1,11 @@
-package com.readkite.algorithm.genetic;
+package com.redkite.algorithm.genetic;
 
-import com.readkite.algorithm.Algorithm;
-import com.readkite.algorithm.model.Schedule;
+import com.redkite.algorithm.Algorithm;
+import com.redkite.algorithm.model.Schedule;
 
 import java.util.List;
 
-/**
- * Created by Kirill Liubun on 22/03/2016.
- */
+
 public class GeneticAlgorithm implements Algorithm {
     private List<Schedule> population;
     private List<Schedule> bestChromosomes;

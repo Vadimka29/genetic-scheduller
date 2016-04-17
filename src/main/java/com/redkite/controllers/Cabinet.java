@@ -1,4 +1,4 @@
-package com.readkite.controllers;
+package com.redkite.controllers;
 
 import org.springframework.stereotype.Controller;
 

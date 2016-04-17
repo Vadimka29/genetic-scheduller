@@ -1,4 +1,4 @@
-package com.readkite.algorithm.model;
+package com.redkite.algorithm.model;
 
 
 import java.time.LocalDate;

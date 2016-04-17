@@ -1,18 +1,16 @@
-package com.readkite.entities;
+package com.redkite.entities;
 
-/**
- * Created by Vadym on 20.03.2016.
- */
-public class UserEntity {
+
+public class User {
     private String login;
     private String password;
 
-    public UserEntity(String login, String password) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public UserEntity() {
+    public User() {
 
     }
 

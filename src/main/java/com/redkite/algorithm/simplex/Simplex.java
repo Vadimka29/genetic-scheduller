@@ -1,7 +1,7 @@
-package com.readkite.algorithm.simplex;
+package com.redkite.algorithm.simplex;
 
-import com.readkite.algorithm.Algorithm;
-import com.readkite.algorithm.model.Schedule;
+import com.redkite.algorithm.Algorithm;
+import com.redkite.algorithm.model.Schedule;
 
 /**
  * Created by Kirill Liubun on 22/03/2016.
