@@ -2,10 +2,12 @@ package com.readkite.repositories.impl;
 
 import com.readkite.entities.UserEntity;
 import com.readkite.repositories.UserRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by Vadym on 20.03.2016.
  */
+@Repository
 public class UserRepositoryImpl implements UserRepository {
 
     @Override
