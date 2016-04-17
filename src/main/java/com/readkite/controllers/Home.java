@@ -17,7 +17,7 @@ public class Home {
 
     @RequestMapping(value = "/user")
     public String getUserPage(){
-        return "user";
+        return "user-page";
     }
     @RequestMapping(value = "/error")
     public String getErrorPage(){

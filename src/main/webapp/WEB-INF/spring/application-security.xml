@@ -9,7 +9,8 @@
 
     <http use-expressions="true">
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
-        <form-login login-page="/login"
+        <intercept-url pattern="/user" access="hasAuthority('USER')"/>
+        <form-login login-page="/index"
                     login-processing-url="/j_spring_security_check"
                     username-parameter="j_username"
                     password-parameter="j_password"

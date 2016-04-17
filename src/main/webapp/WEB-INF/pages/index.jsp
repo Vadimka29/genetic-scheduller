@@ -32,12 +32,12 @@
         </nav>
     </div>
     <div class="row" title="Login Dialog" id = "login-dialog">
-        <form action="#" class="login-form">
+        <form action="j_spring_security_check" id="login-form" method="POST">
             <fieldset>
                 <label for="login-form__email">Email</label>
-                <input type="email" id="login-form__email" class="ui-widget-content ui-corner-all">
+                <input type="email" id="login-form__email" name="j_username" class="ui-widget-content ui-corner-all">
                 <label for="login-form__password">Password</label>
-                <input type="password" id="login-form__password" class="ui-widget-content ui-corner-all">
+                <input type="password" id="login-form__password" name="j_password" class="ui-widget-content ui-corner-all">
             </fieldset>
         </form>
     </div>
@@ -53,7 +53,7 @@
 <script>
 (function () {
     var loginFunc = function () {
-        a = 5;
+        $('#login-form').submit();
     };
     $('#login-dialog').dialog({
         autoOpen: false,
