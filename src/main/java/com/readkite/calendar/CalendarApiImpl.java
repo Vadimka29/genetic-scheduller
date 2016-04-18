@@ -16,9 +16,7 @@ import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.Events;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -87,7 +85,7 @@ public class CalendarApiImpl implements CalendarApi {
      */
     public static Credential authorize() {
         // Load client secrets.
-        InputStream in = CalendarApiImpl.class.getResourceAsStream("/resources/client_secret.json");
+        InputStream in = CalendarApiImpl.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets = null;
         GoogleAuthorizationCodeFlow flow = null;
         Credential credential = null;
@@ -103,7 +101,6 @@ public class CalendarApiImpl implements CalendarApi {
             e.printStackTrace();
         }
 
-        System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
 
@@ -121,18 +118,15 @@ public class CalendarApiImpl implements CalendarApi {
     }
 
     @Override
-    public void addEvent(String name, DateTime startDate, int duration) {
+    public void addEvent(String name, DateTime startDate, int duration) throws IOException {
         Event event = new Event()
                 .setSummary(name)
                 .setStart(convertDateTimeToEventDateTime(startDate));
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, duration);
         event.setEnd(convertDateToEventDateTime(calendar.getTime()));
-        try {
-            service.events().insert(CALENDAR_ID, event).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        service.events().insert(CALENDAR_ID, event).execute();
     }
 
     private EventDateTime convertDateToEventDateTime(Date date) {
@@ -144,16 +138,13 @@ public class CalendarApiImpl implements CalendarApi {
     }
 
     @Override
-    public void addEvent(String name, DateTime startDate, DateTime endDate) {
+    public void addEvent(String name, DateTime startDate, DateTime endDate) throws IOException {
         Event event = new Event()
                 .setSummary(name)
                 .setStart(convertDateTimeToEventDateTime(startDate))
                 .setEnd(convertDateTimeToEventDateTime(endDate));
-        try {
-            service.events().insert(CALENDAR_ID, event).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        service.events().insert(CALENDAR_ID, event).execute();
     }
 
     @Override
@@ -166,92 +157,59 @@ public class CalendarApiImpl implements CalendarApi {
     }
 
     @Override
-    public List<Event> getAllEvents() {
+    public List<Event> getAllEvents() throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
-        Events events = null;
-        try {
-            events = service.events().list(CALENDAR_ID)
-                    .setTimeMin(now)
-//                    .setTimeMax(endDate) // TODO: set TimeMax to end of semester
-                    .setOrderBy("startTime")
-                    .setSingleEvents(true)
-                    .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Events events = service.events().list(CALENDAR_ID)
+                            .setTimeMin(now)
+    //                       .setTimeMax(endDate) // TODO: set TimeMax to end of semester
+                            .setOrderBy("startTime")
+                            .setSingleEvents(true)
+                            .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 
     @Override
-    public List<Event> getNFirstEvents(int amount) {
+    public List<Event> getNFirstEvents(int amount) throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
-        Events events = null;
-        try {
-            events = service.events().list(CALENDAR_ID)
-                    .setMaxResults(amount)
-                    .setTimeMin(now)
-                    .setOrderBy("startTime")
-                    .setSingleEvents(true)
-                    .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Events events = service.events().list(CALENDAR_ID)
+                            .setMaxResults(amount)
+                            .setTimeMin(now)
+                            .setOrderBy("startTime")
+                            .setSingleEvents(true)
+                            .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 
     @Override
-    public List<Event> getEvents(DateTime endDate) {
+    public List<Event> getEvents(DateTime endDate) throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
-        Events events = null;
-        try {
-            events = service.events().list(CALENDAR_ID)
-                    .setTimeMin(now)
-                    .setTimeMax(endDate)
-                    .setOrderBy("startTime")
-                    .setSingleEvents(true)
-                    .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Events events = service.events().list(CALENDAR_ID)
+                            .setTimeMin(now)
+                            .setTimeMax(endDate)
+                            .setOrderBy("startTime")
+                            .setSingleEvents(true)
+                            .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 
     @Override
-    public Event getEvent(String eventId) {
-        try {
-            return service.events().get(CALENDAR_ID, eventId).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public Event getEvent(String eventId) throws IOException {
+        return service.events().get(CALENDAR_ID, eventId).execute();
     }
 
     @Override
-    public void deleteEvent(String eventId) {
-        try {
-            service.events().delete(CALENDAR_ID, eventId).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void deleteEvent(String eventId) throws IOException {
+        service.events().delete(CALENDAR_ID, eventId).execute();
     }
 
     @Override
-    public void deleteEvent(Event event) {
-        try {
-            service.events().delete(CALENDAR_ID, event.getId()).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void deleteEvent(Event event) throws IOException {
+        service.events().delete(CALENDAR_ID, event.getId()).execute();
     }
 
     @Override
-    public void editEvent(Event event) {
-        try {
-            service.events().update(CALENDAR_ID, event.getId(), event).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Calendar.getInstance().add(Calendar.HOUR, 2);
+    public void editEvent(Event event) throws IOException {
+        service.events().update(CALENDAR_ID, event.getId(), event).execute();
     }
 
 }

@@ -3,30 +3,31 @@ package com.readkite.calendar;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by scread on 12.04.16.
  */
 public interface CalendarApi {
-    void addEvent(String name, DateTime startDate, int duration);
+    void addEvent(String name, DateTime startDate, int duration) throws IOException;
 
-    void addEvent(String name, DateTime startDate, DateTime endDate);
+    void addEvent(String name, DateTime startDate, DateTime endDate) throws IOException;
 
     void addEvent(Event event);
 
-    List<Event> getAllEvents();
+    List<Event> getAllEvents() throws IOException;
 
-    List<Event> getNFirstEvents(int amount);
+    List<Event> getNFirstEvents(int amount) throws IOException;
 
-    List<Event> getEvents(DateTime endDate);
+    List<Event> getEvents(DateTime endDate) throws IOException;
 
-    Event getEvent(String eventId);
+    Event getEvent(String eventId) throws IOException;
 
-    void deleteEvent(Event event);
+    void deleteEvent(Event event) throws IOException;
 
-    void deleteEvent(String eventId);
+    void deleteEvent(String eventId) throws IOException;
 
-    void editEvent(Event event);
+    void editEvent(Event event) throws IOException;
 
 }
