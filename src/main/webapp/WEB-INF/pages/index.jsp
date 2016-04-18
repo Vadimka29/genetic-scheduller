@@ -1,4 +1,6 @@
-<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!--
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,7 @@
     <link rel="stylesheet" href="/resources/assets/vendor/bootstrap-3.3.6-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="/resources/assets/project/css/landing-page.css">
     <link rel="stylesheet" href="/resources/assets/vendor/bxslider/jquery.bxslider.css"/>
-    <link rel="stylesheet" <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <script src="/resources/assets/vendor/jquery-2.2.1.min.js"></script>
     <script src="/resources/assets/vendor/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
@@ -18,26 +20,27 @@
     <div class="row">
         <nav class="navbar navbar-default menu">
             <div class="container-fluid">
-              <div class="navbar-header">
-                  <img id="menu__logo" src="/resources/assets/project/img/logo.png">
-              </div>
-              <div class="collapse navbar-collapse">
+                <div class="navbar-header">
+                    <img id="menu__logo" src="/resources/assets/project/img/logo.png">
+                </div>
+                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <%--<button type="button" class="btn btn-default navbar-btn">Sign in</button>--%>
-                            <a class="menu__sign-in-link" href="#">Sign in</a>
+                        <a class="menu__sign-in-link" href="#">Sign in</a>
                     </ul>
-              </div>
+                </div>
 
             </div>
         </nav>
     </div>
-    <div class="row" title="Login Dialog" id = "login-dialog">
+    <div class="row" title="Login Dialog" id="login-dialog">
         <form action="j_spring_security_check" id="login-form" method="POST">
             <fieldset>
                 <label for="login-form__email">Email</label>
                 <input type="email" id="login-form__email" name="j_username" class="ui-widget-content ui-corner-all">
                 <label for="login-form__password">Password</label>
-                <input type="password" id="login-form__password" name="j_password" class="ui-widget-content ui-corner-all">
+                <input type="password" id="login-form__password" name="j_password"
+                       class="ui-widget-content ui-corner-all">
             </fieldset>
         </form>
     </div>
@@ -45,37 +48,42 @@
         <p id="motivation-text">Довір нам контроль над своїм часом</p>
     </div>
     <div class="navbar-fixed-bottom footer">
-        <p>&copy;Vadym Akymov</p>
+        <%--<p>&copy; Red Kite</p>--%>
     </div>
 </div>
 
 
 <script>
-(function () {
-    var loginFunc = function () {
-        $('#login-form').submit();
-    };
-    $('#login-dialog').dialog({
-        autoOpen: false,
-        width: 500,
-        height: 250,
-        modal: true,
-        buttons: {
-            "Login": loginFunc,
-            Cancel: function() {$(this).dialog("close");},
-        },
-        'open': function () {
-            $('#motivation-text').hide();
-            $('.ui-widget-overlay').css('background', '#000000');
-        },
-        'close': function () {
-            $('#motivation-text').show();
+    (function ($) {
+
+        function loginFunc() {
+            $('#login-form').submit();
         }
-    });
-    $('.menu__sign-in-link').click(function () {
-        $('#login-dialog').dialog('open');
-    });
-})();
+
+        $('#login-dialog').dialog({
+            autoOpen: false,
+            width: 500,
+            height: 250,
+            modal: true,
+            buttons: {
+                Login: loginFunc,
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            },
+            open: function () {
+                $('#motivation-text').hide();
+                $('.ui-widget-overlay').css('background', '#000000');
+            },
+            close: function () {
+                $('#motivation-text').show();
+            }
+        });
+
+        $('.menu__sign-in-link').click(function () {
+            $('#login-dialog').dialog('open');
+        });
+    })(jQuery);
 </script>
 </body>
 </html>
