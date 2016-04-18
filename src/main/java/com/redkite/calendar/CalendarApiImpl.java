@@ -1,4 +1,4 @@
-package com.readkite.calendar;
+package com.redkite.calendar;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -160,11 +160,11 @@ public class CalendarApiImpl implements CalendarApi {
     public List<Event> getAllEvents() throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
         Events events = service.events().list(CALENDAR_ID)
-                            .setTimeMin(now)
-    //                       .setTimeMax(endDate) // TODO: set TimeMax to end of semester
-                            .setOrderBy("startTime")
-                            .setSingleEvents(true)
-                            .execute();
+                .setTimeMin(now)
+                //                       .setTimeMax(endDate) // TODO: set TimeMax to end of semester
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 
@@ -172,11 +172,11 @@ public class CalendarApiImpl implements CalendarApi {
     public List<Event> getNFirstEvents(int amount) throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
         Events events = service.events().list(CALENDAR_ID)
-                            .setMaxResults(amount)
-                            .setTimeMin(now)
-                            .setOrderBy("startTime")
-                            .setSingleEvents(true)
-                            .execute();
+                .setMaxResults(amount)
+                .setTimeMin(now)
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 
@@ -184,11 +184,11 @@ public class CalendarApiImpl implements CalendarApi {
     public List<Event> getEvents(DateTime endDate) throws IOException {
         DateTime now = new DateTime(System.currentTimeMillis());
         Events events = service.events().list(CALENDAR_ID)
-                            .setTimeMin(now)
-                            .setTimeMax(endDate)
-                            .setOrderBy("startTime")
-                            .setSingleEvents(true)
-                            .execute();
+                .setTimeMin(now)
+                .setTimeMax(endDate)
+                .setOrderBy("startTime")
+                .setSingleEvents(true)
+                .execute();
         return events != null ? events.getItems() : new ArrayList<>();
     }
 

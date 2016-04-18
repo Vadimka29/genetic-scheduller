@@ -1,4 +1,4 @@
-package com.readkite.calendar;
+package com.redkite.calendar;
 
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
