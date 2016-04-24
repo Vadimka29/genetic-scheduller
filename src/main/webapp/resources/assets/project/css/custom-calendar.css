@@ -14,3 +14,22 @@ body {
 .fc-center {
     color: #ffffff;
 }
+
+.footer {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    padding-left: 15px;
+    padding-top: 15px;
+    font-family: "Open Sans";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+    .footer {
+        display: block;
+    }
+}

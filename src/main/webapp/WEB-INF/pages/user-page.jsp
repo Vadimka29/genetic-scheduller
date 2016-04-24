@@ -16,6 +16,9 @@
 <body>
 <div class="container-fluid">
     <div id='calendar'></div>
+    <div class="footer">
+        <p>&copy; Red Kite</p>
+    </div>
 </div>
 
 <script>
@@ -23,12 +26,16 @@
         $('#calendar').fullCalendar({
             theme: true,
             weekends: false,
-            height: 600,
+            editable: true,
+            height: window.innerHeight - 150,
             header: {
                 right: 'month, agendaWeek, agendaDay',
                 left: 'prev,next,today',
                 center: 'title'
-            }
+            },
+            events: [
+                {id: '1', start:'2016-04-25', end: '2016-04-25', title:'Зафигачить диплом'}
+            ]
         })
     });
 </script>
