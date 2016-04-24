@@ -6,6 +6,7 @@
 <head>
     <title>Scheduler Service</title>
     <link rel="stylesheet" href="/resources/assets/vendor/bootstrap-3.3.6-dist/css/bootstrap.css"/>
+
     <link rel="stylesheet" href="/resources/assets/project/css/landing-page.css">
     <link rel="stylesheet" href="/resources/assets/vendor/bxslider/jquery.bxslider.css"/>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -48,7 +49,7 @@
         <p id="motivation-text">Довір нам контроль над своїм часом</p>
     </div>
     <div class="navbar-fixed-bottom footer">
-        <%--<p>&copy; Red Kite</p>--%>
+        <p>&copy; Red Kite</p>
     </div>
 </div>
 

@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#calendar {
+    margin-top: 25px;
+}
+body {
+    background-image: url('http://i.imgur.com/wCJScKr.jpg');
+    background-size: cover;
+}
+
+.fc-center {
+    color: #ffffff;
+}

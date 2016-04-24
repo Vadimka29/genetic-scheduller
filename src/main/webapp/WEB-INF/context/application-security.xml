@@ -14,7 +14,7 @@
                     login-processing-url="/j_spring_security_check"
                     username-parameter="j_username"
                     password-parameter="j_password"
-                    default-target-url="/admin"
+                    default-target-url="/user"
                     authentication-failure-url="/error"/>
         <csrf disabled="true"></csrf>
     </http>
