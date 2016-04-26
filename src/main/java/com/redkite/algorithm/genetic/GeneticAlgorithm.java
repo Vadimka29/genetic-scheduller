@@ -13,6 +13,8 @@ public class GeneticAlgorithm implements Algorithm {
 
     @Override
     public Schedule doCalculation() {
+
+        System.out.println("geneticAlgorithm");
         return null;
     }
 
