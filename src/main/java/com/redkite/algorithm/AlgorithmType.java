@@ -1,4 +1,4 @@
-package com.redkite.algorithm.model;
+package com.redkite.algorithm;
 
 /**
  * Created by Vadym on 26.04.2016.
