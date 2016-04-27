@@ -4,18 +4,19 @@ package com.redkite.algorithm.model;
 import java.time.LocalDate;
 
 public class Task {
-    private String name;
+    private final long id;
     //task know about day when it should be done
     private LocalDate date;
-    private long groupId;
-    private long duration;
+    private final long groupId;
+    private final String groupName;
+    private final long duration;
     private int weight;
 
-    public Task(String name, long groupId, long duration, int weight) {
-        this.name = name;
+    public Task(long id, long groupId, long duration, String groupName) {
+        this.id = id;
         this.groupId = groupId;
         this.duration = duration;
-        this.weight = weight;
+        this.groupName = groupName;
     }
 
     public long getDuration() {
@@ -36,5 +37,11 @@ public class Task {
 
     public long getGroupId() {
         return groupId;
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, groupName, duration / (60 * 1000.0));
     }
 }
