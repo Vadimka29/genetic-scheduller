@@ -6,9 +6,6 @@ import com.redkite.algorithm.model.Task;
 
 import java.time.LocalDate;
 
-/**
- * Created by Kirill Liubun on 27/04/2016.
- */
 public class GenSchedule extends Schedule implements Chromosome<Schedule>  {
 
     public GenSchedule(LocalDate start, LocalDate end) {
