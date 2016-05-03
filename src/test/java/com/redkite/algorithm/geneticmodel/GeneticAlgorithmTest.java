@@ -1,4 +1,4 @@
-package com.redkite.algorithm.genetic;
+package com.redkite.algorithm.geneticmodel;
 
 import org.junit.Test;
 

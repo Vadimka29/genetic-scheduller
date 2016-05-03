@@ -1,5 +1,6 @@
 package com.redkite.algorithm;
 
+import com.redkite.algorithm.impl.AlgorithmFactory;
 import org.junit.Test;
 
 /**
