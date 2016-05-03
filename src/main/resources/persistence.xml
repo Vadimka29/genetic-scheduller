@@ -10,12 +10,13 @@
             http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:component-scan base-package="com.redkite.services"/>
+    <context:property-placeholder location="classpath:db-local.properties"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://localhost:5432/scheduler"/>
-        <property name="username" value="postgres"/>
-        <property name="password" value="send08"/>
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="jdbc:postgresql://${jdbc.host}:${jdbc.port}/${jdbc.db.name}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

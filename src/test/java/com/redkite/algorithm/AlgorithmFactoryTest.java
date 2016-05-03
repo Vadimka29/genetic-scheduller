@@ -1,8 +1,5 @@
 package com.redkite.algorithm;
 
-import com.redkite.algorithm.Algorithm;
-import com.redkite.algorithm.AlgorithmFactory;
-import com.redkite.algorithm.AlgorithmType;
 import org.junit.Test;
 
 /**
@@ -14,6 +11,6 @@ public class AlgorithmFactoryTest {
     @Test
     public void testRetrieveAlgorithmRealization(){
         Algorithm algorithm = (new AlgorithmFactory()).retrieveAlgorithmRealization(AlgorithmType.GENETIC_ALGORITHM);
-        algorithm.doCalculation();
+        algorithm.doCalculation(null, null);
     }
 }
