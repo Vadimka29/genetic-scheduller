@@ -1,6 +1,8 @@
-package com.redkite.algorithm;
+package com.redkite.algorithm.impl;
 
-import com.redkite.algorithm.genetic.GeneticAlgorithm;
+import com.redkite.algorithm.Algorithm;
+import com.redkite.algorithm.AlgorithmType;
+import com.redkite.algorithm.impl.GeneticAlgorithm;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
