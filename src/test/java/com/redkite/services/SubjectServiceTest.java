@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  * Created by Vadym on 03.05.2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/persistence.xml"})
+@ContextConfiguration(locations = {"/beans.xml"})
 public class SubjectServiceTest {
 
     @Autowired
@@ -31,6 +31,7 @@ public class SubjectServiceTest {
             assertNotNull(subjectItem.getDuration());
             assertTrue(subjectItem.getDuration() > 0);
             assertNotNull(subjectItem.getWorkType());
+            System.out.println(subjectItem.getWorkName());
         });
     }
 }
