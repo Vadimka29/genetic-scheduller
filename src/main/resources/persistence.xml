@@ -44,4 +44,8 @@
 
     <jpa:repositories base-package="com.redkite.repositories"/>
 
+    <bean id="xmlParser" class="com.redkite.xml.parser.impl.JaxbParser"/>
+
+    <bean id="calendarService" class="com.redkite.calendar.CalendarApiImpl"/>
+
 </beans>
