@@ -1,32 +1,42 @@
 package com.redkite.entities;
 
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name="users")
 public class User {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = true)
+    private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String role;
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User() {
+    public User() {}
 
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

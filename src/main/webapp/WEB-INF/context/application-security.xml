@@ -7,24 +7,22 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+
+
     <http use-expressions="true">
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
-        <intercept-url pattern="/user" access="hasAuthority('USER')"/>
+        <intercept-url pattern="/calendar" access="hasAuthority('USER')"/>
         <form-login login-page="/index"
                     login-processing-url="/j_spring_security_check"
                     username-parameter="j_username"
                     password-parameter="j_password"
-                    default-target-url="/user"
+                    default-target-url="/calendar"
                     authentication-failure-url="/error"/>
         <csrf disabled="true"></csrf>
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="admin" authorities="ADMIN"/>
-                <user name="user" password="user" authorities="USER"/>
-            </user-service>
+        <authentication-provider user-service-ref="myUserDetailsService">
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

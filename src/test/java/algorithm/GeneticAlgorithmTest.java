@@ -1,7 +1,7 @@
 package algorithm;
 
 import com.redkite.algorithm.model.Schedule;
-import com.redkite.algorithm.model.Task;
+import com.redkite.algorithm.model.SubTask;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -17,14 +17,14 @@ public class GeneticAlgorithmTest {
 
     @Test
     public void testModel() {
-        Task task0 = new Task(1, 1, (long) (1.5 * ONE_HOUR), "Algebra");
-        Task task1 = new Task(2, 2, (long) (1 * ONE_HOUR), "Biology");
-        Task task2 = new Task(3, 3, (long) (2 * ONE_HOUR), "Chemistry");
-        Task task3 = new Task(5, 1, (long) (1.5 * ONE_HOUR), "Algebra");
-        Task task4 = new Task(6, 2, (long) (1 * ONE_HOUR), "Biology");
-        Task task5 = new Task(7, 3, (long) (2 * ONE_HOUR), "Chemistry");
+        SubTask subTask0 = new SubTask(1, 1, (long) (1.5 * ONE_HOUR), "Algebra");
+        SubTask subTask1 = new SubTask(2, 2, (long) (1 * ONE_HOUR), "Biology");
+        SubTask subTask2 = new SubTask(3, 3, (long) (2 * ONE_HOUR), "Chemistry");
+        SubTask subTask3 = new SubTask(5, 1, (long) (1.5 * ONE_HOUR), "Algebra");
+        SubTask subTask4 = new SubTask(6, 2, (long) (1 * ONE_HOUR), "Biology");
+        SubTask subTask5 = new SubTask(7, 3, (long) (2 * ONE_HOUR), "Chemistry");
         Schedule schedule = new Schedule(LocalDate.parse("2016-04-27", dtf), LocalDate.parse("2016-05-20", dtf));
-        schedule.createScheduleBySemester(Arrays.asList(task0, task1, task2, task3, task4, task5));
+        schedule.createScheduleBySemester(Arrays.asList(subTask0, subTask1, subTask2, subTask3, subTask4, subTask5));
 
         System.out.println(schedule.toString());
     }

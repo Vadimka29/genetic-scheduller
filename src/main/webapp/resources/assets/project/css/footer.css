@@ -1,0 +1,8 @@
+.footer {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    height: 30px;
+    padding-left: 15px;
+    padding-top: 15px;
+    font-family: "Open Sans";
+}
