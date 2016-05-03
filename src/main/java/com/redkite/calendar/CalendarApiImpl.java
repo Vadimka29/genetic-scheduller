@@ -85,7 +85,7 @@ public class CalendarApiImpl implements CalendarApi {
      */
     public static Credential authorize() {
         // Load client secrets.
-        InputStream in = CalendarApiImpl.class.getResourceAsStream("/client_secret.json");
+        InputStream in = CalendarApiImpl.class.getClassLoader().getResourceAsStream("client_secret.json");
         GoogleClientSecrets clientSecrets = null;
         GoogleAuthorizationCodeFlow flow = null;
         Credential credential = null;
@@ -181,10 +181,9 @@ public class CalendarApiImpl implements CalendarApi {
     }
 
     @Override
-    public List<Event> getEvents(DateTime endDate) throws IOException {
-        DateTime now = new DateTime(System.currentTimeMillis());
+    public List<Event> getEvents(DateTime startDate, DateTime endDate) throws IOException {
         Events events = service.events().list(CALENDAR_ID)
-                .setTimeMin(now)
+                .setTimeMin(startDate)
                 .setTimeMax(endDate)
                 .setOrderBy("startTime")
                 .setSingleEvents(true)
