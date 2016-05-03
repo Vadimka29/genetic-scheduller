@@ -2,6 +2,8 @@ package com.redkite.algorithm.genetic;
 
 import com.redkite.algorithm.Algorithm;
 import com.redkite.algorithm.model.Schedule;
+import com.redkite.algorithm.model.Semester;
+import com.redkite.algorithm.model.SubTask;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class GeneticAlgorithm implements Algorithm {
 
 
     @Override
-    public Schedule doCalculation() {
+    public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
 
         System.out.println("geneticAlgorithm");
         return null;

@@ -1,47 +1,43 @@
 package com.redkite.algorithm.model;
 
 
+import com.redkite.entities.Task;
+
 import java.time.LocalDate;
 
 public class SubTask {
     private final long id;
     //task know about day when it should be done
-    private LocalDate date;
-    private final long groupId;
-    private final String groupName;
-    private final long duration;
-    private int weight;
+    private LocalDate executionDate;
+    private final Integer duration; // in hours
+    private final Task parentTask;
 
-    public SubTask(long id, long groupId, long duration, String groupName) {
+    public SubTask(long id, Task parentTask, Integer duration) {
         this.id = id;
-        this.groupId = groupId;
+        this.parentTask = parentTask;
         this.duration = duration;
-        this.groupName = groupName;
     }
 
     public long getDuration() {
         return duration;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
     public LocalDate getDate() {
-        return date;
+        return executionDate;
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.executionDate = date;
     }
 
-    public long getGroupId() {
-        return groupId;
-    }
 
 
     @Override
     public String toString() {
-        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, groupName, duration / (60 * 1000.0));
+        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, parentTask.getTaskName(), duration / (60 * 1000.0));
+    }
+
+    public String getParentName() {
+        return parentTask.getTaskName();
     }
 }

@@ -29,11 +29,11 @@ public class GenSchedule extends Schedule implements Chromosome<Schedule>  {
 
 
     //TODO write in functional style
-    private SubTask findLastTaskInGroup(int groupId) {
+    private SubTask findLastTaskInGroup(String name) {
         SubTask last = null;
         for (Day day : days) {
             for (SubTask subTask : day.getSubTasks()) {
-                if (subTask.getGroupId() == groupId) {
+                if (subTask.getParentName().equals(name)) {
                     if (last == null)
                         last = subTask;
                     if (subTask.getDate().isAfter(last.getDate()))
@@ -49,11 +49,11 @@ public class GenSchedule extends Schedule implements Chromosome<Schedule>  {
         return 0;
     }
 
-    private SubTask findFirstTaskInGroup(int groupId) {
+    private SubTask findFirstTaskInGroup(String name) {
         SubTask first = null;
         for (Day day : days) {
             for (SubTask subTask : day.getSubTasks()) {
-                if (subTask.getGroupId() == groupId) {
+                if (subTask.getParentName().equals(name)) {
                     if (first == null)
                         first = subTask;
                     if (subTask.getDate().isBefore(first.getDate()))

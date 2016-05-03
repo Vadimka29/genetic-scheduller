@@ -16,14 +16,22 @@ public class Day {
     private final LocalDate date;
     private List<SubTask> subTasks;
     //amount of free minutes
-    private final long dayLimit;
+    private long dayLimit;
     //TODO find physical explanation
     private final int optimumCapacity;
     private Random random = new Random();
 
 
+    /*
+    * Create day with passed date with 6h hours limit
+    * */
     public Day(LocalDate date) {
         this(date, 6 * ChronoUnit.HOURS.getDuration().toMillis(), 0);
+    }
+
+
+    public Day(LocalDate date, long dayLimit) {
+        this(date, dayLimit, 0);
     }
 
     public Day(LocalDate date, long dayLimit, int optimumCapacity) {
@@ -38,9 +46,7 @@ public class Day {
         return dayLimit >= subTasks.stream().mapToLong(SubTask::getDuration).sum();
     }
 
-    public boolean isOptimumCapacity() {
-        return optimumCapacity >= subTasks.stream().mapToInt(SubTask::getWeight).sum();
-    }
+
 
     public void randomlyReplaceTask(SubTask subTask) {
         int index = random.nextInt(subTasks.size() - 1);
@@ -61,6 +67,13 @@ public class Day {
         return subTasks.add(subTask);
     }
 
+    public void changeLimit(Integer limit) {
+        if(limit < 24 && limit > -1) {
+            dayLimit = limit;
+        } else {
+            throw new IllegalArgumentException("Incorrect number of hours, number can't be greater than 24 or negative");
+        }
+    }
 
     @Override
     public String toString() {

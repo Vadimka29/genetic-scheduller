@@ -1,12 +1,8 @@
 package com.redkite.algorithm.genetic;
 
-import com.redkite.algorithm.model.Schedule;
-import com.redkite.algorithm.model.SubTask;
 import org.junit.Test;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 
 public class GeneticAlgorithmTest {
@@ -17,7 +13,7 @@ public class GeneticAlgorithmTest {
 
     @Test
     public void testModel() {
-        SubTask subTask0 = new SubTask(1, 1, (long) (1.5 * ONE_HOUR), "Algebra");
+/*        SubTask subTask0 = new SubTask(1, 1, (long) (1.5 * ONE_HOUR), "Algebra");
         SubTask subTask1 = new SubTask(2, 2, (long) (1 * ONE_HOUR), "Biology");
         SubTask subTask2 = new SubTask(3, 3, (long) (2 * ONE_HOUR), "Chemistry");
         SubTask subTask3 = new SubTask(5, 1, (long) (1.5 * ONE_HOUR), "Algebra");
@@ -26,6 +22,6 @@ public class GeneticAlgorithmTest {
         Schedule schedule = new Schedule(LocalDate.parse("2016-04-27", dtf), LocalDate.parse("2016-05-20", dtf));
         schedule.createScheduleBySemester(Arrays.asList(subTask0, subTask1, subTask2, subTask3, subTask4, subTask5));
 
-        System.out.println(schedule.toString());
+        System.out.println(schedule.toString());*/
     }
 }

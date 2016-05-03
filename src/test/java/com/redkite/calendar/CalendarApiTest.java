@@ -32,8 +32,6 @@ public class CalendarApiTest {
     public void getAllEvents() throws Exception {
         List<Event> allEvents = calendarApi.getAllEvents();
         Assert.notNull(allEvents);
-        allEvents.forEach(event -> {
-            System.out.println(event);
-        });
+        allEvents.forEach(System.out::println);
     }
 }

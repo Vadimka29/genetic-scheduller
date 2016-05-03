@@ -23,6 +23,12 @@ public class Schedule {
         fillDays();
     }
 
+    public Schedule(Semester semester) {
+        this.start = semester.getStart();
+        this.end = semester.getEnd();
+        days = semester.getDays();
+    }
+
     public void createScheduleBySemester(List<SubTask> subTasks) {
         daysWithTasks = new HashSet<>();
         numberOfTasks = subTasks.size();
