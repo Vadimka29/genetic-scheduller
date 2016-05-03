@@ -2,7 +2,6 @@
 
 }
 
-
 .cabinet-container__controls {
     padding-bottom: 15px;
     border-bottom: 2px solid #5CB85C;
@@ -11,4 +10,8 @@
 .cabinet-container__table {
     margin-top: 30px;
 }
-
+.cabinet__new-task {
+    width: 350px;
+    background: #FFF;
+    padding: 15px;
+}

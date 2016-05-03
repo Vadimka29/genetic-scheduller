@@ -24,8 +24,8 @@
             <div class="cabinet-container">
                 <div class="cabinet-container__controls">
                     <div class="btn-toolbar" role="toolbar">
-                        <button type="button" class="btn btn-success">Додати задачу</button>
-                        <button type="button" class="btn btn-primary">Створити розклад</button>
+                        <button type="button" class="btn btn-success jsAddTask">Додати задачу</button>
+                        <button type="button" class="btn btn-primary jsGenerateSchedule">Створити розклад</button>
                         <div class="btn-group" role="group">
                             <label for="algorithm"></label>
                             <select id="algorithm" class="selectpicker">
@@ -35,8 +35,9 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="cabinet-container__table">
-                    <table class="table table-hover">
+                    <table class="table table-hover jsTable">
                         <thead>
                         <tr>
                             <th>№</th>
@@ -78,7 +79,32 @@
             </div>
         </div>
     </div>
+
     <jsp:include page="common/footer.jsp" />
+    <div class="cabinet__new-task" style="display: none">
+        <form class="new-task">
+            <div class="form-group">
+                <label for="task">Task</label>
+                <input type="text" class="form-control" id="task" placeholder="Physics">
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due date</label>
+                <input type="date" class="form-control" id="dueDate" placeholder="10/10/2016">
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" class="form-control" id="duration">
+            </div>
+            <div class="form-group">
+                <label for="hoursPerDay">Hours Per Day</label>
+                <input type="text" class="form-control" id="hoursPerDay">
+            </div>
+            <div>
+                <input class="btn btn-success" type="submit" value="Додати задачу">
+                <input class="btn btn-danger b-close" type="button" value="Відміна">
+            </div>
+        </form>
+    </div>
     <script src="<c:url value="/resources/assets/vendor/jquery-2.2.1.min.js"/>"></script>
     <script src="<c:url value="/resources/assets/vendor/bootstrap-3.3.6-dist/js/bootstrap.js"/>"></script>
     <script src="<c:url value="/resources/assets/vendor/jquery.bpopup.min.js"/>"></script>
