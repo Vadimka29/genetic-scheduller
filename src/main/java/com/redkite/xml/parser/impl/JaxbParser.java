@@ -1,5 +1,6 @@
 package com.redkite.xml.parser.impl;
 
+import com.redkite.xml.model.SubjectsHolder;
 import com.redkite.xml.parser.XMLParser;
 
 import javax.xml.bind.JAXBContext;
@@ -13,10 +14,10 @@ import java.io.File;
 public class JaxbParser implements XMLParser {
 
     @Override
-    public Object getObject(File xmlFile, Class cl) throws JAXBException {
-        JAXBContext context = JAXBContext.newInstance(cl);
+    public SubjectsHolder getObject(File xmlFile) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(SubjectsHolder.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Object object = unmarshaller.unmarshal(xmlFile);
-        return object;
+        Object result = unmarshaller.unmarshal(xmlFile);
+        return (SubjectsHolder) result;
     }
 }
