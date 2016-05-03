@@ -27,7 +27,7 @@ public class XmlSubjectService implements SubjectService {
     public XmlSubjectService(XMLParser parser) throws JAXBException {
         this.xmlParser = parser;
         String pathToXmlDataFile = getClass().getClassLoader().getResource("testdata/test-data.xml").getPath();
-        subjectsHolder = (SubjectsHolder) xmlParser.getObject(new File(pathToXmlDataFile), SubjectsHolder.class);
+        subjectsHolder = xmlParser.getObject(new File(pathToXmlDataFile));
     }
 
 
