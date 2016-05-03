@@ -1,4 +1,4 @@
-package algorithm;
+package com.redkite.algorithm;
 
 import com.redkite.algorithm.Algorithm;
 import com.redkite.algorithm.AlgorithmFactory;
