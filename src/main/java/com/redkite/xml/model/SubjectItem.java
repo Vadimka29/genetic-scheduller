@@ -40,6 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "description",
     "workType",
     "duration",
+    "hoursPerDay",
     "retrieveDate",
     "deadline"
 })
@@ -54,6 +55,8 @@ public class SubjectItem {
     protected SubjectItemType workType;
     @XmlElement(namespace = "scheduler", required = true)
     protected int duration;
+    @XmlElement(name = "hours-per-day", namespace = "scheduler", required = true, defaultValue = "2")
+    protected int hoursPerDay;
     @XmlElement(name = "retrieve-date", namespace = "scheduler", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar retrieveDate;
@@ -155,6 +158,14 @@ public class SubjectItem {
      */
     public void setDuration(int value) {
         this.duration = value;
+    }
+
+    public int getHoursPerDay(){
+        return hoursPerDay;
+    }
+
+    public void setHoursPerDay(int value){
+        this.hoursPerDay = value;
     }
 
     /**
