@@ -28,7 +28,7 @@
             <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="work-type" type="scheduler:subjectitem-type"/>
             <xs:element name="duration" type="scheduler:hours-count"/>
-            <xs:element name="hours-per-day" type="scheduler:hours-count" minOccurs="0" default="2"/>
+            <xs:element name="hours-per-day" type="scheduler:hours-count" default="2"/>
             <xs:element name="retrieve-date" type="xs:date"/>
             <xs:element name="deadline" type="xs:date"/>
         </xs:sequence>

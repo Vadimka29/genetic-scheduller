@@ -15,6 +15,7 @@
             <description>First lab work from TSPP subject</description>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2015-09-24</retrieve-date>
             <deadline>2016-10-22</deadline>
         </subject-item>
@@ -22,6 +23,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-22</retrieve-date>
             <deadline>2016-11-19</deadline>
         </subject-item>
@@ -29,6 +31,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-19</retrieve-date>
             <deadline>2016-12-17</deadline>
         </subject-item>
@@ -36,6 +39,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-17</retrieve-date>
             <deadline>2016-12-31</deadline>
         </subject-item>
@@ -52,6 +56,7 @@
             <description>First lab work from ComplexSystemModeling subject</description>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-01</retrieve-date>
             <deadline>2016-09-16</deadline>
         </subject-item>
@@ -59,6 +64,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-16</retrieve-date>
             <deadline>2016-09-30</deadline>
         </subject-item>
@@ -66,6 +72,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-30</retrieve-date>
             <deadline>2016-10-21</deadline>
         </subject-item>
@@ -73,6 +80,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-21</retrieve-date>
             <deadline>2016-10-28</deadline>
         </subject-item>
@@ -80,6 +88,7 @@
             <work-name>LabWork №5</work-name>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-28</retrieve-date>
             <deadline>2016-11-11</deadline>
         </subject-item>
@@ -87,6 +96,7 @@
             <work-name>LabWork №6</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-11</retrieve-date>
             <deadline>2016-11-25</deadline>
         </subject-item>
@@ -94,11 +104,12 @@
             <work-name>Course work</work-name>
             <work-type>course-work</work-type>
             <duration>30</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-19</retrieve-date>
             <deadline>2016-12-31</deadline>
         </subject-item>
     </subject>
-    
+
     <subject name="Computer Networks">
         <completion-type>exam</completion-type>
         <priority>high</priority>
@@ -108,6 +119,7 @@
             <work-name>LabWork №1</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-01</retrieve-date>
             <deadline>2016-10-09</deadline>
         </subject-item>
@@ -115,6 +127,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-09</retrieve-date>
             <deadline>2016-10-23</deadline>
         </subject-item>
@@ -122,6 +135,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-23</retrieve-date>
             <deadline>2016-11-06</deadline>
         </subject-item>
@@ -129,6 +143,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-06</retrieve-date>
             <deadline>2016-11-20</deadline>
         </subject-item>
@@ -136,6 +151,7 @@
             <work-name>LabWork №5</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-20</retrieve-date>
             <deadline>2016-12-04</deadline>
         </subject-item>
@@ -143,6 +159,7 @@
             <work-name>LabWork №6</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-04</retrieve-date>
             <deadline>2016-12-18</deadline>
         </subject-item>
@@ -150,6 +167,7 @@
             <work-name>Computer Network RGR</work-name>
             <work-type>rgr</work-type>
             <duration>18</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-04</retrieve-date>
             <deadline>2016-12-30</deadline>
         </subject-item>
@@ -164,6 +182,7 @@
             <work-name>LabWork №1</work-name>
             <work-type>lab-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-10</retrieve-date>
             <deadline>2016-10-08</deadline>
         </subject-item>
@@ -171,6 +190,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>1</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-08</retrieve-date>
             <deadline>2016-11-05</deadline>
         </subject-item>
@@ -178,6 +198,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-05</retrieve-date>
             <deadline>2016-12-03</deadline>
         </subject-item>
@@ -185,6 +206,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-03</retrieve-date>
             <deadline>2016-12-31</deadline>
         </subject-item>
@@ -198,6 +220,7 @@
             <work-name>LabWork №1</work-name>
             <work-type>lab-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-01</retrieve-date>
             <deadline>2016-09-15</deadline>
         </subject-item>
@@ -205,6 +228,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>1</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-15</retrieve-date>
             <deadline>2016-10-01</deadline>
         </subject-item>
@@ -212,6 +236,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-01</retrieve-date>
             <deadline>2016-10-20</deadline>
         </subject-item>
@@ -219,6 +244,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-20</retrieve-date>
             <deadline>2016-11-05</deadline>
         </subject-item>
@@ -226,6 +252,7 @@
             <work-name>LabWork №5</work-name>
             <work-type>lab-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-05</retrieve-date>
             <deadline>2016-12-01</deadline>
         </subject-item>
@@ -233,6 +260,7 @@
             <work-name>LabWork №6</work-name>
             <work-type>lab-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-01</retrieve-date>
             <deadline>2016-12-31</deadline>
         </subject-item>
@@ -247,6 +275,7 @@
             <work-name>LabWork №1</work-name>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-01</retrieve-date>
             <deadline>2016-10-22</deadline>
         </subject-item>
@@ -254,6 +283,7 @@
             <work-name>LabWork №2</work-name>
             <work-type>lab-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-22</retrieve-date>
             <deadline>2016-11-19</deadline>
         </subject-item>
@@ -261,6 +291,7 @@
             <work-name>LabWork №3</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-19</retrieve-date>
             <deadline>2016-12-01</deadline>
         </subject-item>
@@ -268,6 +299,7 @@
             <work-name>LabWork №4</work-name>
             <work-type>lab-work</work-type>
             <duration>3</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-12-01</retrieve-date>
             <deadline>2016-12-25</deadline>
         </subject-item>
@@ -275,6 +307,7 @@
             <work-name>Computer Graphic RGR</work-name>
             <work-type>rgr</work-type>
             <duration>4</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-20</retrieve-date>
             <deadline>2016-12-30</deadline>
         </subject-item>
@@ -288,6 +321,7 @@
             <work-name>Individual Work №1</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-10</retrieve-date>
             <deadline>2016-10-10</deadline>
         </subject-item>
@@ -296,6 +330,7 @@
             <work-name>Individual Work №2</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-10</retrieve-date>
             <deadline>2016-10-30</deadline>
         </subject-item>
@@ -304,6 +339,7 @@
             <work-name>Individual Work №3</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-30</retrieve-date>
             <deadline>2016-11-15</deadline>
         </subject-item>
@@ -312,6 +348,7 @@
             <work-name>Individual Work №4</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-15</retrieve-date>
             <deadline>2016-12-15</deadline>
         </subject-item>
@@ -325,6 +362,7 @@
             <work-name>Topic №1</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-09-01</retrieve-date>
             <deadline>2016-10-01</deadline>
         </subject-item>
@@ -332,6 +370,7 @@
             <work-name>Topic №2</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-01</retrieve-date>
             <deadline>2016-10-15</deadline>
         </subject-item>
@@ -339,6 +378,7 @@
             <work-name>Topic №3</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-15</retrieve-date>
             <deadline>2016-11-01</deadline>
         </subject-item>
@@ -346,6 +386,7 @@
             <work-name>Topic №4</work-name>
             <work-type>home-work</work-type>
             <duration>2</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-11-01</retrieve-date>
             <deadline>2016-11-10</deadline>
         </subject-item>
@@ -353,8 +394,410 @@
             <work-name>Unit exercises</work-name>
             <work-type>home-work</work-type>
             <duration>5</duration>
+            <hours-per-day></hours-per-day>
             <retrieve-date>2016-10-01</retrieve-date>
             <deadline>2016-12-15</deadline>
         </subject-item>
     </subject>
+</subjects><?xml version="1.0" encoding="UTF-8"?>
+<subjects
+xmlns="scheduler"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="/schema/work-item.xsd">
+
+<subject name="Decision Theory">
+    <completion-type>differentiated-credit</completion-type>
+    <priority>medium</priority>
+    <pass-day>Monday</pass-day>
+    <pass-day>Friday</pass-day>
+
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <description>First lab work from TSPP subject</description>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2015-09-24</retrieve-date>
+        <deadline>2016-10-22</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-22</retrieve-date>
+        <deadline>2016-11-19</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-19</retrieve-date>
+        <deadline>2016-12-17</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-17</retrieve-date>
+        <deadline>2016-12-31</deadline>
+    </subject-item>
+</subject>
+
+<subject name="Complex systems modeling">
+    <completion-type>exam</completion-type>
+    <priority>high</priority>
+    <pass-day>Tuesday</pass-day>
+    <pass-day>Thursday</pass-day>
+
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <description>First lab work from ComplexSystemModeling subject</description>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-01</retrieve-date>
+        <deadline>2016-09-16</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-16</retrieve-date>
+        <deadline>2016-09-30</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-30</retrieve-date>
+        <deadline>2016-10-21</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-21</retrieve-date>
+        <deadline>2016-10-28</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №5</work-name>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-28</retrieve-date>
+        <deadline>2016-11-11</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №6</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-11</retrieve-date>
+        <deadline>2016-11-25</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Course work</work-name>
+        <work-type>course-work</work-type>
+        <duration>30</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-19</retrieve-date>
+        <deadline>2016-12-31</deadline>
+    </subject-item>
+</subject>
+
+<subject name="Computer Networks">
+    <completion-type>exam</completion-type>
+    <priority>high</priority>
+    <pass-day>Wednesday</pass-day>
+
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-01</retrieve-date>
+        <deadline>2016-10-09</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-09</retrieve-date>
+        <deadline>2016-10-23</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-23</retrieve-date>
+        <deadline>2016-11-06</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-06</retrieve-date>
+        <deadline>2016-11-20</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №5</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-20</retrieve-date>
+        <deadline>2016-12-04</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №6</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-04</retrieve-date>
+        <deadline>2016-12-18</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Computer Network RGR</work-name>
+        <work-type>rgr</work-type>
+        <duration>18</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-04</retrieve-date>
+        <deadline>2016-12-30</deadline>
+    </subject-item>
+</subject>
+
+<subject name="IT Project Management">
+    <completion-type>credit</completion-type>
+    <priority>medium</priority>
+    <pass-day>Friday</pass-day>
+
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <work-type>lab-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-10</retrieve-date>
+        <deadline>2016-10-08</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>1</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-08</retrieve-date>
+        <deadline>2016-11-05</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-05</retrieve-date>
+        <deadline>2016-12-03</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-03</retrieve-date>
+        <deadline>2016-12-31</deadline>
+    </subject-item>
+</subject>
+
+<subject name="Information systems design">
+    <completion-type>credit</completion-type>
+    <priority>medium</priority>
+    <pass-day>Friday</pass-day>
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <work-type>lab-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-01</retrieve-date>
+        <deadline>2016-09-15</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>1</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-15</retrieve-date>
+        <deadline>2016-10-01</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-01</retrieve-date>
+        <deadline>2016-10-20</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-20</retrieve-date>
+        <deadline>2016-11-05</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №5</work-name>
+        <work-type>lab-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-05</retrieve-date>
+        <deadline>2016-12-01</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №6</work-name>
+        <work-type>lab-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-01</retrieve-date>
+        <deadline>2016-12-31</deadline>
+    </subject-item>
+</subject>
+
+<subject name="Computer Graphic">
+    <completion-type>differentiated-credit</completion-type>
+    <priority>medium</priority>
+    <pass-day>Thursday</pass-day>
+
+    <subject-item>
+        <work-name>LabWork №1</work-name>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-01</retrieve-date>
+        <deadline>2016-10-22</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №2</work-name>
+        <work-type>lab-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-22</retrieve-date>
+        <deadline>2016-11-19</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №3</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-19</retrieve-date>
+        <deadline>2016-12-01</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>LabWork №4</work-name>
+        <work-type>lab-work</work-type>
+        <duration>3</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-12-01</retrieve-date>
+        <deadline>2016-12-25</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Computer Graphic RGR</work-name>
+        <work-type>rgr</work-type>
+        <duration>4</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-20</retrieve-date>
+        <deadline>2016-12-30</deadline>
+    </subject-item>
+</subject>
+<subject name="Law">
+    <completion-type>exam</completion-type>
+    <priority>low</priority>
+    <pass-day>Wednesday</pass-day>
+
+    <subject-item>
+        <work-name>Individual Work №1</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-10</retrieve-date>
+        <deadline>2016-10-10</deadline>
+    </subject-item>
+
+    <subject-item>
+        <work-name>Individual Work №2</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-10</retrieve-date>
+        <deadline>2016-10-30</deadline>
+    </subject-item>
+
+    <subject-item>
+        <work-name>Individual Work №3</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-30</retrieve-date>
+        <deadline>2016-11-15</deadline>
+    </subject-item>
+
+    <subject-item>
+        <work-name>Individual Work №4</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-15</retrieve-date>
+        <deadline>2016-12-15</deadline>
+    </subject-item>
+</subject>
+
+<subject name="English">
+    <completion-type>credit</completion-type>
+    <priority>low</priority>
+    <pass-day>Monday</pass-day>
+    <subject-item>
+        <work-name>Topic №1</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-09-01</retrieve-date>
+        <deadline>2016-10-01</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Topic №2</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-01</retrieve-date>
+        <deadline>2016-10-15</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Topic №3</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-15</retrieve-date>
+        <deadline>2016-11-01</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Topic №4</work-name>
+        <work-type>home-work</work-type>
+        <duration>2</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-11-01</retrieve-date>
+        <deadline>2016-11-10</deadline>
+    </subject-item>
+    <subject-item>
+        <work-name>Unit exercises</work-name>
+        <work-type>home-work</work-type>
+        <duration>5</duration>
+        <hours-per-day></hours-per-day>
+        <retrieve-date>2016-10-01</retrieve-date>
+        <deadline>2016-12-15</deadline>
+    </subject-item>
+</subject>
 </subjects>
