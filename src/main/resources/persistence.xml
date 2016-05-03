@@ -10,7 +10,9 @@
             http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <context:component-scan base-package="com.redkite.services"/>
-    <context:property-placeholder location="classpath:db-local.properties"/>
+    <context:property-placeholder location="classpath:db-openshift.properties"/>
+
+    <bean id="userService" class="com.redkite.services.impl.UserServiceImpl"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -30,7 +32,7 @@
         <property name="packagesToScan" value="com.redkite.entities"/>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
@@ -45,8 +47,6 @@
 
     <jpa:repositories base-package="com.redkite.repositories"/>
 
-    <bean id="xmlParser" class="com.redkite.xml.parser.impl.JaxbParser"/>
-
-    <bean id="calendarService" class="com.redkite.calendar.CalendarApiImpl"/>
+    <import resource="beans.xml"/>
 
 </beans>
