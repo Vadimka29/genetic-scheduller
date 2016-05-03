@@ -22,7 +22,7 @@ public class Day {
     private Random random = new Random();
 
 
-    /*
+    /**
     * Create day with passed date with 6h hours limit
     * */
     public Day(LocalDate date) {
