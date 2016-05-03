@@ -23,15 +23,15 @@ public class Schedule {
         fillDays();
     }
 
-    public void createScheduleBySemester(List<Task> tasks) {
+    public void createScheduleBySemester(List<SubTask> subTasks) {
         daysWithTasks = new HashSet<>();
-        numberOfTasks = tasks.size();
+        numberOfTasks = subTasks.size();
         int index = random.nextInt(days.size());
 
-        for (Task task : tasks) {
+        for (SubTask subTask : subTasks) {
             Day day = days.get(index);
             daysWithTasks.add(day);
-            day.addTask(task);
+            day.addTask(subTask);
             index = random.nextInt(days.size());
 
         }

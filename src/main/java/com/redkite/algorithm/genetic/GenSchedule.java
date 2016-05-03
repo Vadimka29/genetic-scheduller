@@ -2,7 +2,7 @@ package com.redkite.algorithm.genetic;
 
 import com.redkite.algorithm.model.Day;
 import com.redkite.algorithm.model.Schedule;
-import com.redkite.algorithm.model.Task;
+import com.redkite.algorithm.model.SubTask;
 
 import java.time.LocalDate;
 
@@ -29,15 +29,15 @@ public class GenSchedule extends Schedule implements Chromosome<Schedule>  {
 
 
     //TODO write in functional style
-    private Task findLastTaskInGroup(int groupId) {
-        Task last = null;
+    private SubTask findLastTaskInGroup(int groupId) {
+        SubTask last = null;
         for (Day day : days) {
-            for (Task task : day.getTasks()) {
-                if (task.getGroupId() == groupId) {
+            for (SubTask subTask : day.getSubTasks()) {
+                if (subTask.getGroupId() == groupId) {
                     if (last == null)
-                        last = task;
-                    if (task.getDate().isAfter(last.getDate()))
-                        last = task;
+                        last = subTask;
+                    if (subTask.getDate().isAfter(last.getDate()))
+                        last = subTask;
 
                 }
             }
@@ -49,15 +49,15 @@ public class GenSchedule extends Schedule implements Chromosome<Schedule>  {
         return 0;
     }
 
-    private Task findFirstTaskInGroup(int groupId) {
-        Task first = null;
+    private SubTask findFirstTaskInGroup(int groupId) {
+        SubTask first = null;
         for (Day day : days) {
-            for (Task task : day.getTasks()) {
-                if (task.getGroupId() == groupId) {
+            for (SubTask subTask : day.getSubTasks()) {
+                if (subTask.getGroupId() == groupId) {
                     if (first == null)
-                        first = task;
-                    if (task.getDate().isBefore(first.getDate()))
-                        first = task;
+                        first = subTask;
+                    if (subTask.getDate().isBefore(first.getDate()))
+                        first = subTask;
                 }
             }
         }

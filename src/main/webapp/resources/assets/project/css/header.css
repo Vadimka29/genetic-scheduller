@@ -1,0 +1,42 @@
+.menu {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+#menu__logo {
+    width: 150px;
+    padding: 5px;
+}
+
+.navbar-right {
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.menu__sign-in-link {
+    padding-right: 20px;
+}
+
+.menu__item {
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    padding-right: 20px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+a, a:visited {
+    text-decoration: none !important;
+}
+
+/*TODO figure out*/
+a:visited, a:active, a:link {
+    outline: none !important;
+    border: none !important;
+}
+
+a:hover, a:visited {
+    color: #fff;
+}

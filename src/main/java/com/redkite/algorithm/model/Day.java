@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Day {
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final LocalDate date;
-    private List<Task> tasks;
+    private List<SubTask> subTasks;
     //amount of free minutes
     private final long dayLimit;
     //TODO find physical explanation
@@ -30,42 +30,42 @@ public class Day {
         this.date = date;
         this.dayLimit = dayLimit;
         this.optimumCapacity = optimumCapacity;
-        this.tasks = new ArrayList<>();
+        this.subTasks = new ArrayList<>();
     }
 
     //hard criteria
     public boolean isEnoughTime() {
-        return dayLimit >= tasks.stream().mapToLong(Task::getDuration).sum();
+        return dayLimit >= subTasks.stream().mapToLong(SubTask::getDuration).sum();
     }
 
     public boolean isOptimumCapacity() {
-        return optimumCapacity >= tasks.stream().mapToInt(Task::getWeight).sum();
+        return optimumCapacity >= subTasks.stream().mapToInt(SubTask::getWeight).sum();
     }
 
-    public void randomlyReplaceTask(Task task) {
-        int index = random.nextInt(tasks.size() - 1);
-        task.setDate(date);
-        tasks.add(index, task);
+    public void randomlyReplaceTask(SubTask subTask) {
+        int index = random.nextInt(subTasks.size() - 1);
+        subTask.setDate(date);
+        subTasks.add(index, subTask);
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public List<Task> getTasks() {
-        return new ArrayList<>(tasks);
+    public List<SubTask> getSubTasks() {
+        return new ArrayList<>(subTasks);
     }
 
-    public boolean addTask(Task task) {
-        task.setDate(date);
-        return tasks.add(task);
+    public boolean addTask(SubTask subTask) {
+        subTask.setDate(date);
+        return subTasks.add(subTask);
     }
 
 
     @Override
     public String toString() {
-        List<String> taskList = tasks.stream()
-                .map(Task::toString)
+        List<String> taskList = subTasks.stream()
+                .map(SubTask::toString)
                 .collect(Collectors.toList());
         String tasks = taskList.isEmpty() ? "Free Day" : StringUtils.join(taskList, "\n\t");
         return "Day[" + dtf.format(date) + "]\n\t" + tasks;

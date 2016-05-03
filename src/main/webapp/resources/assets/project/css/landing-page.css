@@ -15,26 +15,6 @@ body {
     height: 100%;
 }
 
-.menu {
-    background-color: rgba(0, 0, 0, 0.4);
-    border: none !important;
-}
-
-#menu__logo {
-    width: 150px;
-}
-
-.navbar-right {
-    padding-left: 10px;
-    padding-top: 15px;
-}
-
-.menu__sign-in-link:link, .menu__sign-in-link:hover,
-.menu__sign-in-link:visited, .menu__sign-in-link:active {
-    color: #ffffff;
-    font-size: 20px;
-    text-decoration: none;
-}
 
 @import url(http://fonts.googleapis.com/css?family=Fauna+One|Muli);
 
@@ -54,13 +34,6 @@ body {
     width: 95%;
 }
 
-.footer {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: #ffffff;
-    padding-left: 15px;
-    padding-top: 15px;
-    font-family: "Open Sans";
-}
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     #motivation-text {

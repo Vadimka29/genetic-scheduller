@@ -3,7 +3,7 @@ package com.redkite.algorithm.model;
 
 import java.time.LocalDate;
 
-public class Task {
+public class SubTask {
     private final long id;
     //task know about day when it should be done
     private LocalDate date;
@@ -12,7 +12,7 @@ public class Task {
     private final long duration;
     private int weight;
 
-    public Task(long id, long groupId, long duration, String groupName) {
+    public SubTask(long id, long groupId, long duration, String groupName) {
         this.id = id;
         this.groupId = groupId;
         this.duration = duration;

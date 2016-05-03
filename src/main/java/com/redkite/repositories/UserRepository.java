@@ -1,11 +1,9 @@
 package com.redkite.repositories;
 
 import com.redkite.entities.User;
+import org.springframework.data.repository.Repository;
 
-/**
- * Created by Vadym on 20.03.2016.
- */
-//TODO: Make to use Spring Data Repository
-public interface UserRepository /*extends Repository<UserEntity, Long>*/ {
+
+public interface UserRepository extends Repository<User, Long> {
     User findByLogin(String login);
 }
