@@ -11,6 +11,9 @@ public class SubTask {
     private LocalDate executionDate;
     private final Integer duration; // in hours
     private final Task parentTask;
+    
+    //TODO: (review by vadym): substask execution startLocalTime and execution endLocalTime need to be added to determine
+    //the subtask performing timeline.
 
     public SubTask(long id, Task parentTask, Integer duration) {
         this.id = id;
