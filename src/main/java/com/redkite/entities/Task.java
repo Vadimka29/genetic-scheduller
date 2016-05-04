@@ -48,6 +48,9 @@ public class Task {
 
         for (int i = 0; i < amount; i++) {
             subTasks.add(new SubTask(i, this, hoursPerDay));
+            //TODO: (review by Vadym): Если rest == 0 (т.е. duration нацело делится на hoursPerDay), тогда
+            // тогда последняя сабтаска постоянно будет создавать с duration == 0. Нужно проверять была ли добавлена 1-ца к amount и
+            //только если была добавлена 1-ца, тогда создавать последнюю subtask с duration = rest
             if(i == amount -1) {
                 subTasks.add( new SubTask(i, this, rest));
             }
