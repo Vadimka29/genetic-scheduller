@@ -33,8 +33,34 @@ public class SchedulerModelsConverter {
                 task.setCreatedDate(retrieveDate);
                 task.setDeadline(deadLine);
                 task.setDuration(subjectItem.getDuration());
-                //TODO: how to setup HoursPerDay And priority ????
-//                task.setHoursPerDay();
+                task.setHoursPerDay(subjectItem.getHoursPerDay());
+
+                //TODO: think how to setup priority in normal way
+                int subjectUserPriority = 1;
+                int subjectCompletionTypePriority = 1;
+                switch (subject.getPriority()) {
+                    case LOW:
+                        subjectUserPriority = 1;
+                        break;
+                    case MEDIUM:
+                        subjectUserPriority = 3;
+                        break;
+                    case HIGH:
+                        subjectUserPriority = 5;
+                        break;
+                }
+                switch (subject.getCompletionType()) {
+                    case CREDIT:
+                        subjectCompletionTypePriority = 1;
+                        break;
+                    case DIFFERENTIATED_CREDIT:
+                        subjectCompletionTypePriority = 3;
+                        break;
+                    case EXAM:
+                        subjectCompletionTypePriority = 5;
+                        break;
+                }
+                task.setPriority(subjectUserPriority * subjectCompletionTypePriority);
                 resultList.add(task);
             }
         }
