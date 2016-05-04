@@ -2,7 +2,6 @@ package com.redkite.calendar;
 
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.TimeZone;
 
 import static org.junit.Assert.*;
 
@@ -28,9 +26,18 @@ public class CalendarApiTest {
     private CalendarApi calendarApi;
 
     @Test
-    public void testGetEvents() throws Exception {
-        DateTime now = new DateTime(new Date(), TimeZone.getDefault());
-//        calendarApi.getEvents(now, now.);
+    public void testGetEventsBetweenDates() throws Exception {
+        Instant now = Instant.now();
+        Instant tomorrow = now.plus(1, ChronoUnit.DAYS);
+        DateTime nowDateTime = new DateTime(now.toEpochMilli());
+        DateTime tomorrowDateTime = new DateTime(tomorrow.toEpochMilli());
+        List<Event> events = calendarApi.getEventsBetweenDates(nowDateTime, tomorrowDateTime);
+        events.forEach(event -> {
+            System.out.println(event);
+            DateTime start = event.getStart().getDateTime();
+            DateTime end = event.getEnd().getDateTime();
+            assertTrue(start.getValue() >= now.toEpochMilli() && end.getValue() <= tomorrow.toEpochMilli());
+        });
     }
 
     @Test

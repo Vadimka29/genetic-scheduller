@@ -20,7 +20,7 @@ public interface CalendarApi {
 
     List<Event> getNFirstEvents(int amount) throws IOException;
 
-    List<Event> getEvents(DateTime startDate, DateTime endDate) throws IOException;
+    List<Event> getEventsBetweenDates(DateTime startDate, DateTime endDate) throws IOException;
 
     Event getEvent(String eventId) throws IOException;
 

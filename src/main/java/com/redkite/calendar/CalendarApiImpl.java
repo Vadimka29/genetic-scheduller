@@ -181,7 +181,7 @@ public class CalendarApiImpl implements CalendarApi {
     }
 
     @Override
-    public List<Event> getEvents(DateTime startDate, DateTime endDate) throws IOException {
+    public List<Event> getEventsBetweenDates(DateTime startDate, DateTime endDate) throws IOException {
         Events events = service.events().list(CALENDAR_ID)
                 .setTimeMin(startDate)
                 .setTimeMax(endDate)
