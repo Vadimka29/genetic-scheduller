@@ -36,35 +36,40 @@ public class SchedulerModelsConverter {
                 task.setHoursPerDay(subjectItem.getHoursPerDay());
 
                 //TODO: think how to setup priority in normal way
-                int subjectUserPriority = 1;
-                int subjectCompletionTypePriority = 1;
-                switch (subject.getPriority()) {
-                    case LOW:
-                        subjectUserPriority = 1;
-                        break;
-                    case MEDIUM:
-                        subjectUserPriority = 3;
-                        break;
-                    case HIGH:
-                        subjectUserPriority = 5;
-                        break;
-                }
-                switch (subject.getCompletionType()) {
-                    case CREDIT:
-                        subjectCompletionTypePriority = 1;
-                        break;
-                    case DIFFERENTIATED_CREDIT:
-                        subjectCompletionTypePriority = 3;
-                        break;
-                    case EXAM:
-                        subjectCompletionTypePriority = 5;
-                        break;
-                }
-                task.setPriority(subjectUserPriority * subjectCompletionTypePriority);
+                int subjectItemPriority = calculateSubjectItemPriority(subject, subjectItem);
+                task.setPriority(subjectItemPriority);
                 resultList.add(task);
             }
         }
         return resultList;
+    }
+
+    private static int calculateSubjectItemPriority(Subject subject, SubjectItem subjectItem){
+        int subjectUserPriority = 1;
+        int subjectCompletionTypePriority = 1;
+        switch (subject.getPriority()) {
+            case LOW:
+                subjectUserPriority = 1;
+                break;
+            case MEDIUM:
+                subjectUserPriority = 3;
+                break;
+            case HIGH:
+                subjectUserPriority = 5;
+                break;
+        }
+        switch (subject.getCompletionType()) {
+            case CREDIT:
+                subjectCompletionTypePriority = 1;
+                break;
+            case DIFFERENTIATED_CREDIT:
+                subjectCompletionTypePriority = 3;
+                break;
+            case EXAM:
+                subjectCompletionTypePriority = 5;
+                break;
+        }
+        return subjectUserPriority * subjectCompletionTypePriority;
     }
 
     //TODO: понять кто сформирует первоначальный обьект Semester
