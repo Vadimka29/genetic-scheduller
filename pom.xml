@@ -65,13 +65,6 @@
             <version>4.2.5.RELEASE</version>
         </dependency>
 
-		<!--Spring test-->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>4.2.5.RELEASE</version>
-		</dependency>
-
 		<!--Spring Security-->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -108,12 +101,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
-		<!--Testing-->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
+
 
 		<!--Google Calendar-->
 		<dependency>
@@ -131,6 +119,37 @@
             <artifactId>google-api-services-calendar</artifactId>
             <version>v3-rev125-1.20.0</version>
         </dependency>
+
+		<!--PMD for the  source code problems detecting-->
+		<dependency>
+			<groupId>pmd</groupId>
+			<artifactId>pmd</artifactId>
+			<version>4.2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--START Dependencies for testing START-->
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.2.5.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<!--END Dependencies for testing END-->
+
 	</dependencies>
 
 
