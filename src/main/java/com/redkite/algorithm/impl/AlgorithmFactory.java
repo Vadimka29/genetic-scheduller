@@ -2,7 +2,6 @@ package com.redkite.algorithm.impl;
 
 import com.redkite.algorithm.Algorithm;
 import com.redkite.algorithm.AlgorithmType;
-import com.redkite.algorithm.impl.GeneticAlgorithm;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -20,7 +19,7 @@ public class AlgorithmFactory {
                 algorithmRealization = new GeneticAlgorithm();
                 break;
             case SIMANNEALING_ALGORITHM:
-                //TODO:add algorithm
+                algorithmRealization = new SimulatedAnnealingAlgorithm();
                 break;
         }
         

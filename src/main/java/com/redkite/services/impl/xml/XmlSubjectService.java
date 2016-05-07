@@ -42,4 +42,9 @@ public class XmlSubjectService implements SubjectService {
         }
         return null;
     }
+
+    @Override
+    public List<Subject> getAllSubjects() {
+        return subjectsHolder.getSubject();
+    }
 }

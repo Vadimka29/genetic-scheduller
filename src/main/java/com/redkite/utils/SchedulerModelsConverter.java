@@ -28,11 +28,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class SchedulerModelsConverter {
 
-    public static List<Task> convertFromSubjectsModelToTask(SubjectsHolder subjectsHolder) {
-        Assert.notNull(subjectsHolder, "subjectHolder can't be null");
+    public static List<Task> convertFromSubjectsModelToTask(List<Subject> subjects) {
+        Assert.notNull(subjects, "subjectList can't be null");
 
         List<Task> resultList = new ArrayList<>();
-        for (Subject subject : subjectsHolder.getSubject()) {
+        for (Subject subject : subjects) {
             for (SubjectItem subjectItem : subject.getSubjectItem()) {
                 Task task = new Task();
                 task.setTaskName(subjectItem.getWorkName());

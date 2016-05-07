@@ -1,6 +1,5 @@
 package com.redkite.algorithm.geneticmodel;
 
-import com.redkite.algorithm.geneticmodel.Chromosome;
 import com.redkite.algorithm.model.Day;
 import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.SubTask;

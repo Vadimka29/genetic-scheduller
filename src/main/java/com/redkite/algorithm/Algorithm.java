@@ -8,5 +8,5 @@ import com.redkite.algorithm.model.SubTask;
 import java.util.List;
 
 public interface Algorithm {
-    public Schedule doCalculation(Semester semester, List<SubTask> subTasks);
+    Schedule doCalculation(Semester semester, List<SubTask> subTasks);
 }

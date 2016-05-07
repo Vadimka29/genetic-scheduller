@@ -1,7 +1,5 @@
 package com.redkite.algorithm.model;
 
-
-import lombok.Data;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 

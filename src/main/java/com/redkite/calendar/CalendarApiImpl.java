@@ -45,7 +45,7 @@ public class CalendarApiImpl implements CalendarApi {
     /**
      * Directory to store user credentials for this application.
      */
-    private static final java.io.File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"), ".credentials/genetic-scheduller");
+    private static final File DATA_STORE_DIR = new File(System.getProperty("user.home"), ".credentials/genetic-scheduller");
 
     /**
      * Global instance of the {@link FileDataStoreFactory}.

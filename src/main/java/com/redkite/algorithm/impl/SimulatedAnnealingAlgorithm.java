@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Vadym on 24.04.2016.
  */
-class SimulatedAnnealing implements Algorithm {
+class SimulatedAnnealingAlgorithm implements Algorithm {
     private final double INITIAL_TEMPERATURE = 10;
     private final double TEMPERATURE_INCREASING_PERCENT = 0.97;
 
