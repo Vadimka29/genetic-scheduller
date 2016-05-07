@@ -66,7 +66,7 @@ public class SchedulerModelsConverter {
             Instant instant = Instant.ofEpochMilli(dateTime.getValue());
             if(daysWorkload.get(dateTime) != null){
                 semester.changeLimit(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
-                        daysWorkload.get(dateTime).intValue());
+                        24 - daysWorkload.get(dateTime).intValue());
             }
         });
         return semester;
