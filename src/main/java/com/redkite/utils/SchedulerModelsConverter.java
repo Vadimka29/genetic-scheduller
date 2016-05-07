@@ -9,6 +9,7 @@ import com.redkite.xml.model.Priority;
 import com.redkite.xml.model.Subject;
 import com.redkite.xml.model.SubjectItem;
 import com.redkite.xml.model.SubjectsHolder;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import javax.validation.constraints.NotNull;

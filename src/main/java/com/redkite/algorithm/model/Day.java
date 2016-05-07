@@ -1,6 +1,8 @@
 package com.redkite.algorithm.model;
 
 
+import lombok.Data;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
@@ -16,6 +18,7 @@ public class Day {
     private final LocalDate date;
     private List<SubTask> subTasks;
     //amount of free minutes
+    @Getter
     private long dayLimit;
     //TODO find physical explanation
     private final int optimumCapacity;
