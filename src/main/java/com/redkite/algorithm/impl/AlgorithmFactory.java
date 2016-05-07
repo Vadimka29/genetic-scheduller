@@ -12,9 +12,9 @@ import java.lang.reflect.Proxy;
  * Created by Vadym on 26.04.2016.
  */
 public class AlgorithmFactory {
-    private Object algorithmRealization;
+    private static Object algorithmRealization;
 
-    public Algorithm retrieveAlgorithmRealization(AlgorithmType algorithmType){
+    public static Algorithm retrieveAlgorithmRealization(AlgorithmType algorithmType){
         switch (algorithmType){
             case GENETIC_ALGORITHM:
                 algorithmRealization = new GeneticAlgorithm();
