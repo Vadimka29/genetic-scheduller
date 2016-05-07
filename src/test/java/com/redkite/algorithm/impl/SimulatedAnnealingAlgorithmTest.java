@@ -47,10 +47,10 @@ public class SimulatedAnnealingAlgorithmTest {
         semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
     }
 
-//    @Before
-//    public void setUpData(){
-//        workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(subjectService.getAllSubjects());
-//    }
+    @Before
+    public void setUpData(){
+        workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(subjectService.getAllSubjects());
+    }
 
     @Test
     public void testDoCalculation() throws Exception {
