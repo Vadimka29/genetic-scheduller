@@ -4,6 +4,8 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.calendar.CalendarApi;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,14 @@ public class SchedulerModelsConverterTest {
 
     @Autowired
     private CalendarApi calendarApi;
+    private static DateTime semesterStartDate;
+    private static DateTime semesterEndDate;
 
+    @BeforeClass
+    public static void beforeClassSetup(){
+        semesterStartDate = new DateTime("2016-05-01T00:00:00+02:00");
+        semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
+    }
     @Test
     public void convertFromSubjectsModelToTask() throws Exception {
 
@@ -35,12 +44,10 @@ public class SchedulerModelsConverterTest {
 
     @Test
     public void convertGoogleEventsToSemester() throws Exception {
-        DateTime startDate = new DateTime("2016-05-01T00:00:00");
-        DateTime endDate = new DateTime("2016-12-31T00:00:00");
-        List<Event> events = calendarApi.getEventsBetweenDates(startDate, endDate);
+        List<Event> events = calendarApi.getEventsBetweenDates(semesterStartDate, semesterEndDate);
         Semester semester = SchedulerModelsConverter.convertGoogleEventsToSemester(events,
-                Instant.ofEpochMilli(startDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate(),
-                Instant.ofEpochMilli(endDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate());
+                Instant.ofEpochMilli(semesterStartDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate(),
+                Instant.ofEpochMilli(semesterEndDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate());
         assertNotNull(events);
         assertTrue(!events.isEmpty());
         semester.getDays().forEach(day -> {
