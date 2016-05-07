@@ -11,7 +11,7 @@ public class AlgorithmFactoryTest {
 
     @Test
     public void testRetrieveAlgorithmRealization(){
-        Algorithm algorithm = (new AlgorithmFactory()).retrieveAlgorithmRealization(AlgorithmType.GENETIC_ALGORITHM);
+        Algorithm algorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.GENETIC_ALGORITHM);
         algorithm.doCalculation(null, null);
     }
 }
