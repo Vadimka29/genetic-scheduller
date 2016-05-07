@@ -59,7 +59,7 @@ public class SchedulerModelsConverter {
             long durationInHours = TimeUnit.MILLISECONDS.toHours(event.getEnd().getDateTime().getValue() - event.getStart().getDateTime().getValue());
             Long currentValue = daysWorkload.get(event.getStart().getDate());
             currentValue = (currentValue == null) ? 0 : currentValue;
-            daysWorkload.put(event.getStart().getDate(), currentValue + durationInHours);
+            daysWorkload.put(event.getStart().getDateTime(), currentValue + durationInHours);
         });
         //change all days limit
         daysWorkload.forEach((dateTime, aLong) -> {
