@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * Created by Vadym on 06.05.2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/persistence.xml")
+@ContextConfiguration(locations = "/beans.xml")
 public class SchedulerModelsConverterTest {
 
     @Autowired
