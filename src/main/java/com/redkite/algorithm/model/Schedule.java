@@ -1,6 +1,7 @@
 package com.redkite.algorithm.model;
 
 
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
@@ -29,7 +30,7 @@ public class Schedule {
         days = semester.getDays();
     }
 
-    public void createScheduleBySemester(List<SubTask> subTasks) {
+    public void createScheduleForSemester(List<SubTask> subTasks) {
         daysWithTasks = new HashSet<>();
         numberOfTasks = subTasks.size();
         int index = random.nextInt(days.size());
@@ -61,6 +62,28 @@ public class Schedule {
         }
     }
 
+    public List<SubTask> getAllScheduleTasks(){
+        List<SubTask> allScheduleSubTasks = new ArrayList<>();
+        days.forEach(day -> {
+            allScheduleSubTasks.addAll(day.getSubTasks());});
+        return allScheduleSubTasks;
+    }
+
+    public int getScheduleWorkLoad(){
+        int resultWorkLoad = 0;
+        List<SubTask> allScheduleSubTasks = getAllScheduleTasks();
+        for (SubTask subTask : allScheduleSubTasks) {
+        }
+        return 0;
+    }
+
+    public LocalDate getStart() {
+        return start;
+    }
+
+    public LocalDate getEnd() {
+        return end;
+    }
 
     @Override
     public String toString() {

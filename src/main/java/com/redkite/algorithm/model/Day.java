@@ -15,7 +15,7 @@ public class Day {
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final LocalDate date;
     private List<SubTask> subTasks;
-    //amount of free minutes
+    //amount of free hours
     @Getter
     private long dayLimit;
     //TODO find physical explanation
