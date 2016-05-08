@@ -20,7 +20,7 @@ public class GeneticAlgorithmTest {
         SubTask subTask4 = new SubTask(6, 2, (long) (1 * ONE_HOUR), "Biology");
         SubTask subTask5 = new SubTask(7, 3, (long) (2 * ONE_HOUR), "Chemistry");
         Schedule schedule = new Schedule(LocalDate.parse("2016-04-27", dtf), LocalDate.parse("2016-05-20", dtf));
-        schedule.createScheduleBySemester(Arrays.asList(subTask0, subTask1, subTask2, subTask3, subTask4, subTask5));
+        schedule.createScheduleForSemester(Arrays.asList(subTask0, subTask1, subTask2, subTask3, subTask4, subTask5));
 
         System.out.println(schedule.toString());*/
     }
