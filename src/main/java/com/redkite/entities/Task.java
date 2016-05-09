@@ -1,13 +1,11 @@
 package com.redkite.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.google.api.client.json.Json;
 import com.redkite.algorithm.model.SubTask;
+import com.redkite.serializers.LocalDateDeserializer;
 import com.redkite.serializers.LocalDateSerializer;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,7 +29,7 @@ public class Task implements Serializable {
 
     //TODO refactor type
     @Column(name = "priority")
-    private Integer priority;
+    private Integer priority = 0;
 
     @Column(name = "deadline")
     private LocalDate deadline;
@@ -44,6 +42,10 @@ public class Task implements Serializable {
 
     @Column(name = "duration")
     private Integer duration;
+
+//    @ManyToOne
+//    @JoinColumn(name="id", nullable=false)
+//    private User user;
 
     public List<SubTask> toSubTasks() {
         List<SubTask> subTasks = new ArrayList<>();
@@ -66,11 +68,13 @@ public class Task implements Serializable {
     }
 
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     public void setCreatedDate(LocalDate createdDate){
         this.createdDate = createdDate;
     }
 
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     public void setDeadline(LocalDate deadline){
         this.deadline = deadline;
     }

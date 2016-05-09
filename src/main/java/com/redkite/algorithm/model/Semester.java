@@ -1,13 +1,15 @@
 package com.redkite.algorithm.model;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Semester {
+
+public class Semester implements Serializable {
     protected final LocalDate start;
     protected final LocalDate end;
     private List<Day> days;
@@ -18,12 +20,15 @@ public class Semester {
         fillDays();
     }
 
-    //TODO duplicated
+
+    public int getNumberOfDays() {
+        return (int) ChronoUnit.DAYS.between(start, end) + 1;
+    }
+
     private void fillDays() {
-        int numberOfDays = (int) ChronoUnit.DAYS.between(start, end);
         LocalDate curr = start;
         days = new ArrayList<>();
-        for (int i = 0; i <= numberOfDays; i++) {
+        for (int i = 0; i < getNumberOfDays(); i++) {
             days.add(new Day(curr));
             curr = curr.plusDays(1);
         }
@@ -44,7 +49,7 @@ public class Semester {
     /*
     * Change time limit for specified day by date
     * */
-    public boolean changeLimit( LocalDate date, Integer hours) {
+    public boolean changeLimit(LocalDate date, Integer hours) {
         Optional<Day> day = days.stream()
                 .filter(d -> d.getDate().isEqual(date))
                 .findFirst();

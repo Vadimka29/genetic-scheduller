@@ -1,6 +1,5 @@
 package com.redkite.algorithm.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.redkite.entities.Task;
 import com.redkite.serializers.LocalDateSerializer;
@@ -15,7 +14,7 @@ public class SubTask implements Serializable{
     private final Integer duration; // in hours
     private final Task parentTask;
     
-    //TODO: (review by vadym): substask execution startLocalTime and execution endLocalTime need to be added to determine
+
     //the subtask performing timeline.
 
     public SubTask(long id, Task parentTask, Integer duration) {
@@ -40,7 +39,7 @@ public class SubTask implements Serializable{
 
     @Override
     public String toString() {
-        return String.format("Task[id=%d, name=\'%s\', dur=%d]", id, parentTask.getTaskName(), duration);
+        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, parentTask.getTaskName(), duration / (60 * 1000.0));
     }
 
     public String getParentName() {

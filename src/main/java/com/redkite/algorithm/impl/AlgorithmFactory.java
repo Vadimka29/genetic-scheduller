@@ -7,9 +7,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-/**
- * Created by Vadym on 26.04.2016.
- */
+
 public class AlgorithmFactory {
     private static Object algorithmRealization;
 
@@ -21,6 +19,7 @@ public class AlgorithmFactory {
             case SIMANNEALING_ALGORITHM:
                 algorithmRealization = new SimulatedAnnealingAlgorithm();
                 break;
+
         }
         
         return (Algorithm) Proxy.newProxyInstance(algorithmRealization.getClass().getClassLoader(),

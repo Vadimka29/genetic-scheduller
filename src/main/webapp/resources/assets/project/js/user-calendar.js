@@ -15,11 +15,12 @@ $(document).ready(function () {
             },
             events: calendarEvents
         });
+        $('#calendar').fullCalendar('gotoDate', calendarEvents[0].start);
     }
 
     function getOptimizedScheduleFromServer(callback) {
         $.get("/api/test-schedule", function (data, status) {
-            var events = new Array();
+            var events = [];
             for(var i = 0; i < data.length; i ++){
                 var eventName = data[i].parentName + "[" + data[i].id + "]";
                 var eventObject = {title: eventName, start: new Date(data[i].executionDate)};

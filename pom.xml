@@ -158,6 +158,12 @@
 		</dependency>
 		<!--END Dependencies for testing END-->
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+
 	</dependencies>
 
 

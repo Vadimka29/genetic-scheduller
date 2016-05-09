@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/assets/project/css/footer.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/assets/project/css/header.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/assets/project/css/cabinet.css"/>"/>
+
 </head>
 <body>
 
@@ -49,30 +50,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Психологія реферат</td>
-                            <td>4</td>
-                            <td>12/03/2016</td>
-                            <td>01/03/2016</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>ГКС курсова робота</td>
-                            <td>48</td>
-                            <td>25/05/2016</td>
-                            <td>01/01/2016</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Вища математика РГР</td>
-                            <td>10</td>
-                            <td>08/04/2016</td>
-                            <td>10/03/2016</td>
-                            <td>2</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -80,25 +57,27 @@
         </div>
     </div>
 
-    <jsp:include page="common/footer.jsp" />
+    <jsp:include page="common/footer.jsp"/>
     <div class="cabinet__new-task" style="display: none">
-        <form class="new-task">
+        <form class="new-task jsForm">
             <div class="form-group">
-                <label for="task">Task</label>
-                <input type="text" class="form-control" id="task" placeholder="Physics">
+                <label for="taskName">Task</label>
+                <input type="text" name="taskName" class="form-control" id="taskName" placeholder="Physics">
             </div>
             <div class="form-group">
-                <label for="dueDate">Due date</label>
-                <input type="date" class="form-control" id="dueDate" placeholder="10/10/2016">
+                <label for="deadline">Due date</label>
+                <input type="date" name="deadline" class="form-control" id="deadline" placeholder="10/10/2016">
             </div>
             <div class="form-group">
                 <label for="duration">Duration</label>
-                <input type="text" class="form-control" id="duration">
+                <input type="text" name="duration" class="form-control" id="duration">
             </div>
             <div class="form-group">
                 <label for="hoursPerDay">Hours Per Day</label>
-                <input type="text" class="form-control" id="hoursPerDay">
+                <input type="text" name="hoursPerDay" class="form-control" id="hoursPerDay">
             </div>
+
+
             <div>
                 <input class="btn btn-success" type="submit" value="Додати задачу">
                 <input class="btn btn-danger b-close" type="button" value="Відміна">
@@ -109,6 +88,7 @@
     <script src="<c:url value="/resources/assets/vendor/bootstrap-3.3.6-dist/js/bootstrap.js"/>"></script>
     <script src="<c:url value="/resources/assets/vendor/jquery.bpopup.min.js"/>"></script>
     <script src="<c:url value="/resources/assets/vendor/bootstrap-select-1.10.0/js/bootstrap-select.js"/>"></script>
+    <script src="<c:url value="/resources/assets/vendor/moment.min.js"/>"></script>
     <script src="<c:url value="/resources/assets/project/js/cabinet.js"/>"></script>
 </div>
 </body>

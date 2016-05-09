@@ -32,6 +32,10 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+//    @OneToMany(mappedBy="user")
+//    private List<Task> tasks;
+
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;

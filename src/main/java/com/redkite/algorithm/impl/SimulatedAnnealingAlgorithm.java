@@ -11,9 +11,7 @@ import org.apache.commons.lang3.SerializationUtils;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-/**
- * Created by Vadym on 24.04.2016.
- */
+
 class SimulatedAnnealingAlgorithm implements Algorithm {
     private final double INITIAL_TEMPERATURE = 1000;
     private final double TEMPERATURE_INCREASING_PERCENT = 0.99;
@@ -26,8 +24,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm {
     @Override
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
         //generate initial schedule
-        Schedule initialSchedule = new Schedule(semester);
-        initialSchedule.createScheduleForSemester(subTasks);
+        Schedule initialSchedule = new Schedule(semester, subTasks);
         initialScheduleEnergy = calculateEnergy(initialSchedule);
         System.out.println(initialSchedule);
 

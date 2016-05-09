@@ -17,12 +17,14 @@ public class Day implements Serializable {
     private int freeTime;
     //TODO find physical explanation
     private final int optimumCapacity;
+    // how many hours man can work every day without hurt to his health
+    private final int MAX_DAY_LIMIT = 12;
     private Random random = new Random();
 
 
     /**
-    * Create day with passed date with 6h hours limit
-    * */
+     * Create day with passed date with 6h hours limit
+     */
     public Day(LocalDate date) {
         this(date, 6, 0);
     }
@@ -45,10 +47,9 @@ public class Day implements Serializable {
     }
 
 
-
     public void randomlyMoveSubTask(SubTask subTask, Day fromDay) {
         fromDay.getSubTasks().remove(subTask);
-        if(!subTasks.isEmpty()) {
+        if (!subTasks.isEmpty()) {
             int index = random.nextInt(subTasks.size());
             subTask.setExecutionDate(date);
             subTasks.add(index, subTask);
@@ -71,30 +72,28 @@ public class Day implements Serializable {
     }
 
     public void changeLimit(Integer freeTime) {
-        if(freeTime < 24 && freeTime > -1) {
+        if (freeTime < 24 && freeTime > -1) {
             freeTime = freeTime;
         } else {
             throw new IllegalArgumentException("Incorrect number of hours, number can't be greater than 24 or negative");
         }
     }
 
-    public double getDayWorkLoad(){
-        int workloadHoursSumm = 0;
-        for (SubTask subTask : subTasks) {
-            workloadHoursSumm += subTask.getDuration();
-        }
-        return Math.abs((freeTime - workloadHoursSumm)/ (double) freeTime);
+    /**
+     * Return work load percent of this day
+     */
+    public double getDayWorkLoad() {
+        int subTasksSummTime = subTasks.stream().mapToInt(SubTask::getDuration).sum();
+        return Math.abs((freeTime - subTasksSummTime) / (double) freeTime);
     }
 
-    public int getLeftFreeTimeForDay(){
-        int subTasksSummTime = 0;
-        for (SubTask subTask : subTasks) {
-            subTasksSummTime += subTask.getDuration();
-        }
-        return 12 - subTasksSummTime;
+
+    public int getLeftFreeTimeForDay() {
+        int subTasksSummTime = subTasks.stream().mapToInt(SubTask::getDuration).sum();
+        return MAX_DAY_LIMIT - subTasksSummTime;
     }
 
-    public int getFreeTime(){
+    public int getFreeTime() {
         return freeTime;
     }
 
@@ -104,7 +103,7 @@ public class Day implements Serializable {
                 .map(SubTask::toString)
                 .collect(Collectors.toList());
         String tasks = taskList.isEmpty() ? "Free Day" : StringUtils.join(taskList, "\n\t");
-        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", free time: " + freeTime
+        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", " + freeTime
                 + "]\n\t" + tasks;
 
     }

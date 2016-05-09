@@ -1,40 +1,39 @@
 package com.redkite.algorithm.model;
 
 
+import com.google.api.client.util.Preconditions;
+import com.redkite.entities.Task;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.cglib.core.Local;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Schedule implements Serializable{
-    protected List<Day> days;
     //optimization
     private Set<Day> daysWithTasks;
+    protected Set<Task> tasks;
     private int numberOfTasks;
     private final Random random = new Random();
-    protected final LocalDate start;
-    protected final LocalDate end;
+    protected final Semester semester;
 
-    public Schedule(LocalDate start, LocalDate end) {
-        this.start = start;
-        this.end = end;
-        fillDays();
+    //TODO maybe better pass Tasks
+    public Schedule(Semester semester, List<SubTask> subTasks) {
+        this.semester = semester;
+        createScheduleForSemester(subTasks);
     }
 
-    public Schedule(Semester semester) {
-        this.start = semester.getStart();
-        this.end = semester.getEnd();
-        days = semester.getDays();
-    }
-
-    public void createScheduleForSemester(List<SubTask> subTasks) {
+    /**
+     * Fill semester with subtask in random positions and remember all unique task
+     * */
+    private void createScheduleForSemester(List<SubTask> subTasks) {
+        List<Day> days = semester.getDays();
+        tasks = new HashSet<>();
         daysWithTasks = new HashSet<>();
         numberOfTasks = subTasks.size();
         for (SubTask subTask : subTasks) {
+            tasks.add(subTask.getParentTask());
             //need to respect the two hard stop criterias: 1) Don't schedule the subtask before retrieve date
             //don't schedule the subtasks after the deadlines
             int subtaskRetrieveDayIndex = getIndexOfDay(subTask.getParentTask().getCreatedDate());
@@ -47,8 +46,8 @@ public class Schedule implements Serializable{
     }
 
     public int getIndexOfDay(LocalDate localDate){
-        for(int i = 0; i < days.size(); i++){
-            if(localDate.equals(days.get(i).getDate())){
+        for(int i = 0; i <  semester.getDays().size(); i++){
+            if(localDate.equals( semester.getDays().get(i).getDate())){
                 return i;
             }
         }
@@ -56,37 +55,47 @@ public class Schedule implements Serializable{
     }
 
     public List<Day> getDays() {
-        return days;
+        return new ArrayList<>(semester.getDays());
     }
 
-    public void setDays(List<Day> days) {
-        this.days = days;
-    }
-
-    private void fillDays() {
-        int numberOfDays = (int) ChronoUnit.DAYS.between(start, end);
-        LocalDate curr = start;
-        days = new ArrayList<>();
-        for (int i = 0; i < numberOfDays; i++) {
-            days.add(new Day(curr));
-            curr.plusDays(1);
-        }
-    }
 
     public List<SubTask> getAllScheduledSubTasks(){
         List<SubTask> allScheduleSubTasks = new ArrayList<>();
-        days.forEach(day -> {
+        semester.getDays().forEach(day -> {
             allScheduleSubTasks.addAll(day.getSubTasks());
         });
         return allScheduleSubTasks;
     }
 
+
+    public SubTask findLastTaskInGroup(String taskName) {
+        Preconditions.checkNotNull(taskName, "taskName can't be null");
+        SubTask last = null;
+        for (Day day : semester.getDays()) {
+            for (SubTask subTask : day.getSubTasks()) {
+                if (subTask.getParentName().equals(taskName)) {
+                    if (last == null)
+                        last = subTask;
+                    if (subTask.getExecutionDate().isAfter(last.getExecutionDate()))
+                        last = subTask;
+
+                }
+            }
+        }
+        return last;
+    }
+
+
     public LocalDate getStart() {
-        return start;
+        return semester.getStart();
     }
 
     public LocalDate getEnd() {
-        return end;
+        return semester.getEnd();
+    }
+
+    public int getNumberOfDays() {
+        return  semester.getNumberOfDays();
     }
 
     public Set<Day> getDaysWithTasks() {
@@ -94,10 +103,9 @@ public class Schedule implements Serializable{
     }
 
 
-
     @Override
     public String toString() {
-        return StringUtils.join(days.stream()
+        return StringUtils.join(semester.getDays().stream()
                 .map(Day::toString)
                 .collect(Collectors.toList()), "\n");
     }

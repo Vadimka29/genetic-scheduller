@@ -14,19 +14,15 @@ import com.redkite.services.SubjectService;
 import com.redkite.utils.SchedulerModelsConverter;
 import com.redkite.xml.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.format.datetime.DateFormatter;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,12 +52,13 @@ public class CalendarController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/test-schedule")
-    public List<SubTask> getSchedule(){
+    public List<SubTask> getSchedule(ModelMap model){
         Algorithm simulatedAnnealing = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.SIMANNEALING_ALGORITHM);
         Semester semester = SchedulerModelsConverter.convertGoogleEventsToSemester(events,
                 Instant.ofEpochMilli(semesterStartDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate(),
                 Instant.ofEpochMilli(semesterEndDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate());
         List<SubTask> subTasks = new ArrayList<>();
+//        List<Task> tasks = (List<Task>) model.get("tasks");
         workingTasks.forEach(task -> {
             subTasks.addAll(task.toSubTasks());
         });

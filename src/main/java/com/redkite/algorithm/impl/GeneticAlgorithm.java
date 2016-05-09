@@ -5,18 +5,21 @@ import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.algorithm.model.SubTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class GeneticAlgorithm implements Algorithm {
     private List<Schedule> population;
     private List<Schedule> bestChromosomes;
+    private Integer populationSize = 30;
+    private Integer iteration = 0;
+
 
 
     @Override
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
-
-        System.out.println("geneticAlgorithm");
+        createInitPopulation(semester, subTasks);
         return null;
     }
 
@@ -36,7 +39,19 @@ public class GeneticAlgorithm implements Algorithm {
     }
 
 
-    private void createPopulation() {
-
+    private List<Schedule> Selection() {
+        return null;
     }
+
+
+    private void createInitPopulation(Semester semester, List<SubTask> subTasks) {
+        population = new ArrayList<>(populationSize);
+        for (int i = 0; i < populationSize; i++) {
+            Schedule schedule = new Schedule(semester, subTasks);
+            population.add(schedule);
+        }
+    }
+
+
+
 }

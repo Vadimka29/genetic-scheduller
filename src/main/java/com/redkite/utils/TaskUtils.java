@@ -29,6 +29,7 @@ public class TaskUtils {
         return first;
     }
 
+    @Deprecated
     public static SubTask findLastTaskInGroup(SubTask subTaskSample, List<Day> days) {
         Preconditions.checkNotNull(subTaskSample, "subTaskSample can't be null");
         Preconditions.checkNotNull(days, "days list can't be null!");
