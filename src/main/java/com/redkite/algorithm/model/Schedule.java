@@ -34,14 +34,15 @@ public class Schedule implements Serializable{
     public void createScheduleForSemester(List<SubTask> subTasks) {
         daysWithTasks = new HashSet<>();
         numberOfTasks = subTasks.size();
-        int index = random.nextInt(days.size());
-
         for (SubTask subTask : subTasks) {
+            //need to respect the two hard stop criterias: 1) Don't schedule the subtask before retrieve date
+            //don't schedule the subtasks after the deadlines
+            int subtaskRetrieveDayIndex = getIndexOfDay(subTask.getParentTask().getCreatedDate());
+            int subtaskDeadLineDayIndex = getIndexOfDay(subTask.getParentTask().getDeadline());
+            int index = random.nextInt(subtaskDeadLineDayIndex + 1 - subtaskRetrieveDayIndex) + subtaskRetrieveDayIndex;
             Day day = days.get(index);
             daysWithTasks.add(day);
             day.addTask(subTask);
-            index = random.nextInt(days.size());
-
         }
     }
 

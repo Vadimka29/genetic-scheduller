@@ -49,15 +49,15 @@ public class SimulatedAnnealingAlgorithmTest {
     @BeforeClass
     public static void beforeClassSetup(){
         semesterStartDate = new DateTime("2016-09-01T00:00:00+02:00");
-//        semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
-        semesterEndDate = new DateTime("2016-09-08T00:00:00+02:00");
+        semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
+//        semesterEndDate = new DateTime("2016-09-08T00:00:00+02:00");
 
     }
 
     @Before
     public void setUpData(){
         List<Subject> allSubjects = subjectService.getAllSubjects();
-        allSubjects =  allSubjects.subList(0, subjectsCount);
+//        allSubjects =  allSubjects.subList(0, subjectsCount);
         workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(allSubjects);
     }
 
@@ -73,6 +73,11 @@ public class SimulatedAnnealingAlgorithmTest {
             subTasks.addAll(task.toSubTasks());
         });
         Schedule schedule = simulatedAnnealing.doCalculation(semester, subTasks);
+        //check that schedule has been really optimized
         assertTrue(simulatedAnnealing.getFinalOptimizedValue() <= simulatedAnnealing.getInitialOptimizedValue());
+        //check that all tasks are scheduled after the retrieveDate
+        schedule.getAllScheduledSubTasks().forEach(subTask -> {
+            assertTrue(subTask.getExecutionDate().isAfter(subTask.getParentTask().getCreatedDate()));
+        });
     }
 }

@@ -83,7 +83,11 @@ class SimulatedAnnealingAlgorithm implements Algorithm {
         boolean subtaskInsertedSuccessfully = false;
         int attemp_counter = 0;
         while (!subtaskInsertedSuccessfully && attemp_counter <= FAILED_ATTEMPTS_COUNT){
-            int swapToDayIndex = random.nextInt(daysCount);
+            //hard stop criteria, subtask can't be scheduled before retrieve date
+            int subTaskRetrieveDayIndex = generatedSchedule.getIndexOfDay(movedSubtask.getParentTask().getCreatedDate());
+            //hard stop criteria, subtask can't be scheduled after deadline date
+            int subTaskDeadLineDayIndex = generatedSchedule.getIndexOfDay(movedSubtask.getParentTask().getDeadline());
+            int swapToDayIndex = random.nextInt(subTaskDeadLineDayIndex + 1 - subTaskRetrieveDayIndex) + subTaskRetrieveDayIndex;
             Day toDay = days.get(swapToDayIndex);
             //hard stop criteria(we can't exceed 12 hours per day)
             if(toDay.getLeftFreeTimeForDay() - movedSubtask.getDuration() >= 0){
