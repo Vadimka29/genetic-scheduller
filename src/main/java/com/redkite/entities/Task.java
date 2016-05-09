@@ -1,7 +1,13 @@
 package com.redkite.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.google.api.client.json.Json;
 import com.redkite.algorithm.model.SubTask;
+import com.redkite.serializers.LocalDateSerializer;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -57,6 +63,16 @@ public class Task implements Serializable {
         }
 
         return subTasks;
+    }
+
+    @JsonSerialize(using = LocalDateSerializer.class)
+    public void setCreatedDate(LocalDate createdDate){
+        this.createdDate = createdDate;
+    }
+
+    @JsonSerialize(using = LocalDateSerializer.class)
+    public void setDeadline(LocalDate deadline){
+        this.deadline = deadline;
     }
 
 }

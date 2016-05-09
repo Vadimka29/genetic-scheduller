@@ -1,8 +1,9 @@
 package com.redkite.algorithm.model;
 
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.redkite.entities.Task;
-import lombok.Getter;
+import com.redkite.serializers.LocalDateSerializer;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -27,8 +28,14 @@ public class SubTask implements Serializable{
         return duration;
     }
 
-    public LocalDate getDate() {
+    public LocalDate getExecutionDate() {
         return executionDate;
+    }
+
+
+    @JsonSerialize(using = LocalDateSerializer.class)
+    public void setExecutionDate(LocalDate executionDate){
+        this.executionDate = executionDate;
     }
 
     public void setDate(LocalDate date) {
@@ -48,5 +55,9 @@ public class SubTask implements Serializable{
 
     public Task getParentTask(){
         return parentTask;
+    }
+
+    public long getId() {
+        return id;
     }
 }

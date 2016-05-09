@@ -2,6 +2,7 @@ package com.redkite.algorithm.model;
 
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cglib.core.Local;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -42,6 +43,15 @@ public class Schedule implements Serializable{
             index = random.nextInt(days.size());
 
         }
+    }
+
+    public int getIndexOfDay(LocalDate localDate){
+        for(int i = 0; i < days.size(); i++){
+            if(localDate.equals(days.get(i).getDate())){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public List<Day> getDays() {

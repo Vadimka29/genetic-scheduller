@@ -5,7 +5,6 @@ import com.google.common.base.Preconditions;
 import com.redkite.algorithm.model.Day;
 import com.redkite.algorithm.model.SubTask;
 
-import javax.validation.constraints.NotNull;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class TaskUtils {
                 if (subTask.getParentName().equals(subTaskSample.getParentName())) {
                     if (first == null)
                         first = subTask;
-                    if (subTask.getDate().isBefore(first.getDate()))
+                    if (subTask.getExecutionDate().isBefore(first.getExecutionDate()))
                         first = subTask;
                 }
             }
@@ -40,7 +39,7 @@ public class TaskUtils {
                 if (subTask.getParentName().equals(subTaskSample.getParentName())) {
                     if (last == null)
                         last = subTask;
-                    if (subTask.getDate().isAfter(last.getDate()))
+                    if (subTask.getExecutionDate().isAfter(last.getExecutionDate()))
                         last = subTask;
 
                 }

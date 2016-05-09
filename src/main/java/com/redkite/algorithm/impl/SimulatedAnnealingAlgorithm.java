@@ -66,6 +66,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm {
 
     private Schedule generateNewSchedule(Schedule currentSchedule){
         Schedule generatedSchedule = SerializationUtils.clone(currentSchedule);
+        //days are already sorted
         List<Day> days = generatedSchedule.getDays();
         List<Day> daysWithTasks = new ArrayList<>(generatedSchedule.getDaysWithTasks());
         int daysCount = generatedSchedule.getDays().size();
@@ -106,10 +107,10 @@ class SimulatedAnnealingAlgorithm implements Algorithm {
         List<SubTask> lastSubtasks = getJustLastSubtaskForEveryTask(schedule.getAllScheduledSubTasks(), schedule.getDays());
         int finishDaysSummWithPriority = 0;
         if(!lastSubtasks.isEmpty()){
-            finishDaysSummWithPriority = (int) ChronoUnit.DAYS.between(schedule.getStart(), lastSubtasks.get(0).getDate());
+            finishDaysSummWithPriority = (int) ChronoUnit.DAYS.between(schedule.getStart(), lastSubtasks.get(0).getExecutionDate());
             //iterate just through the last subtask of every task
             for (SubTask subTask : lastSubtasks) {
-                finishDaysSummWithPriority += ChronoUnit.DAYS.between(schedule.getStart(), subTask.getDate())
+                finishDaysSummWithPriority += ChronoUnit.DAYS.between(schedule.getStart(), subTask.getExecutionDate())
                         * (25 - subTask.getParentTask().getPriority());
             }
         }
