@@ -23,7 +23,7 @@ public class Semester {
         int numberOfDays = (int) ChronoUnit.DAYS.between(start, end);
         LocalDate curr = start;
         days = new ArrayList<>();
-        for (int i = 0; i < numberOfDays; i++) {
+        for (int i = 0; i <= numberOfDays; i++) {
             days.add(new Day(curr));
             curr = curr.plusDays(1);
         }
