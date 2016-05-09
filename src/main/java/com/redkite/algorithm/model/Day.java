@@ -5,7 +5,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -51,7 +50,7 @@ public class Day implements Serializable {
         fromDay.getSubTasks().remove(subTask);
         if(!subTasks.isEmpty()) {
             int index = random.nextInt(subTasks.size());
-            subTask.setDate(date);
+            subTask.setExecutionDate(date);
             subTasks.add(index, subTask);
         } else {
             subTasks.add(subTask);
@@ -67,7 +66,7 @@ public class Day implements Serializable {
     }
 
     public boolean addTask(SubTask subTask) {
-        subTask.setDate(date);
+        subTask.setExecutionDate(date);
         return subTasks.add(subTask);
     }
 

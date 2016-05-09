@@ -38,12 +38,6 @@ public class SubTask implements Serializable{
         this.executionDate = executionDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.executionDate = date;
-    }
-
-
-
     @Override
     public String toString() {
         return String.format("Task[id=%d, name=\'%s\', dur=%d]", id, parentTask.getTaskName(), duration);
