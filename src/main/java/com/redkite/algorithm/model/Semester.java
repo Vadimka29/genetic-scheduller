@@ -25,7 +25,7 @@ public class Semester {
         days = new ArrayList<>();
         for (int i = 0; i < numberOfDays; i++) {
             days.add(new Day(curr));
-            curr.plusDays(1);
+            curr = curr.plusDays(1);
         }
     }
 
@@ -44,7 +44,7 @@ public class Semester {
     /*
     * Change time limit for specified day by date
     * */
-    public boolean changeLimit(LocalDate date, Integer hours) {
+    public boolean changeLimit( LocalDate date, Integer hours) {
         Optional<Day> day = days.stream()
                 .filter(d -> d.getDate().isEqual(date))
                 .findFirst();

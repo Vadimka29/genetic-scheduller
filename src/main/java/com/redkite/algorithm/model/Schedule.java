@@ -1,20 +1,20 @@
 package com.redkite.algorithm.model;
 
 
-import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Schedule {
+public class Schedule implements Serializable{
     protected List<Day> days;
     //optimization
     private Set<Day> daysWithTasks;
     private int numberOfTasks;
-    private Random random = new Random();
+    private final Random random = new Random();
     protected final LocalDate start;
     protected final LocalDate end;
 
@@ -62,19 +62,12 @@ public class Schedule {
         }
     }
 
-    public List<SubTask> getAllScheduleTasks(){
+    public List<SubTask> getAllScheduledSubTasks(){
         List<SubTask> allScheduleSubTasks = new ArrayList<>();
         days.forEach(day -> {
-            allScheduleSubTasks.addAll(day.getSubTasks());});
+            allScheduleSubTasks.addAll(day.getSubTasks());
+        });
         return allScheduleSubTasks;
-    }
-
-    public int getScheduleWorkLoad(){
-        int resultWorkLoad = 0;
-        List<SubTask> allScheduleSubTasks = getAllScheduleTasks();
-        for (SubTask subTask : allScheduleSubTasks) {
-        }
-        return 0;
     }
 
     public LocalDate getStart() {
@@ -84,6 +77,12 @@ public class Schedule {
     public LocalDate getEnd() {
         return end;
     }
+
+    public Set<Day> getDaysWithTasks() {
+        return daysWithTasks;
+    }
+
+
 
     @Override
     public String toString() {

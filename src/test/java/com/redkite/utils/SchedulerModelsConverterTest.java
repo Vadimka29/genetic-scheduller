@@ -4,7 +4,6 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.calendar.CalendarApi;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +12,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -54,7 +51,7 @@ public class SchedulerModelsConverterTest {
         assertTrue(!events.isEmpty());
         semester.getDays().forEach(day -> {
             assertNotNull(day);
-            assertTrue(day.getDayLimit() >= 0);
+            assertTrue(day.getFreeTime() >= 0);
         });
     }
 }

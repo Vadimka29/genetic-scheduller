@@ -4,6 +4,7 @@ import com.redkite.algorithm.model.SubTask;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "task")
-public class Task {
+public class Task implements Serializable {
+    private static final int MAX_PRIORITY = 25;
 
     @Id
     @Column(name = "id")

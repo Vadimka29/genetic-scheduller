@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.validation.constraints.AssertTrue;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -32,6 +33,8 @@ public class SubjectServiceTest {
             assertTrue(subjectItem.getDuration() > 0);
             assertNotNull(subjectItem.getWorkType());
             System.out.println(subjectItem.getWorkName());
+            System.out.println(subjectItem.getDuration());
+            assertTrue(subjectItem.getDuration() != 0);
         });
     }
 }

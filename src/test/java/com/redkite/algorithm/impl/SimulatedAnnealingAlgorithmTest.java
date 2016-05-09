@@ -4,7 +4,9 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.redkite.algorithm.Algorithm;
 import com.redkite.algorithm.AlgorithmType;
+import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.Semester;
+import com.redkite.algorithm.model.SubTask;
 import com.redkite.calendar.CalendarApi;
 import com.redkite.entities.Task;
 import com.redkite.services.SubjectService;
@@ -20,6 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.time.Instant;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -41,15 +44,21 @@ public class SimulatedAnnealingAlgorithmTest {
 
     private static List<Task> workingTasks;
 
+    private final int subjectsCount = 1;
+
     @BeforeClass
     public static void beforeClassSetup(){
         semesterStartDate = new DateTime("2016-05-01T00:00:00+02:00");
-        semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
+//        semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
+        semesterEndDate = new DateTime("2016-05-08T00:00:00+02:00");
+
     }
 
     @Before
     public void setUpData(){
-        workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(subjectService.getAllSubjects());
+        List<Subject> allSubjects = subjectService.getAllSubjects();
+        allSubjects =  allSubjects.subList(0, subjectsCount);
+        workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(allSubjects);
     }
 
     @Test
@@ -59,6 +68,11 @@ public class SimulatedAnnealingAlgorithmTest {
         Semester semester = SchedulerModelsConverter.convertGoogleEventsToSemester(events,
                 Instant.ofEpochMilli(semesterStartDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate(),
                 Instant.ofEpochMilli(semesterEndDate.getValue()).atZone(ZoneId.systemDefault()).toLocalDate());
-
+        List<SubTask> subTasks = new ArrayList<>();
+        workingTasks.forEach(task -> {
+            subTasks.addAll(task.toSubTasks());
+        });
+        Schedule schedule = simulatedAnnealing.doCalculation(semester, subTasks);
+//        assertTrue(simulatedAnnealing.getFinalOptimizedValue() <= simulatedAnnealing.getInitialOptimizedValue());
     }
 }

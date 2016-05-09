@@ -2,10 +2,12 @@ package com.redkite.algorithm.model;
 
 
 import com.redkite.entities.Task;
+import lombok.Getter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SubTask {
+public class SubTask implements Serializable{
     private final long id;
     //task know about day when it should be done
     private LocalDate executionDate;
@@ -21,7 +23,7 @@ public class SubTask {
         this.duration = duration;
     }
 
-    public long getDuration() {
+    public int getDuration() {
         return duration;
     }
 
@@ -37,10 +39,14 @@ public class SubTask {
 
     @Override
     public String toString() {
-        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, parentTask.getTaskName(), duration / (60 * 1000.0));
+        return String.format("Task[id=%d, name=\'%s\', dur=%d]", id, parentTask.getTaskName(), duration);
     }
 
     public String getParentName() {
         return parentTask.getTaskName();
+    }
+
+    public Task getParentTask(){
+        return parentTask;
     }
 }

@@ -20,6 +20,16 @@ public class GeneticAlgorithm implements Algorithm {
         return null;
     }
 
+    @Override
+    public double getInitialOptimizedValue() {
+        return 0;
+    }
+
+    @Override
+    public double getFinalOptimizedValue() {
+        return 0;
+    }
+
 
     private List<Schedule> chooseParents() {
         return null;

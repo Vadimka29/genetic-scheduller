@@ -6,9 +6,12 @@ import com.redkite.algorithm.model.Day;
 import com.redkite.algorithm.model.SubTask;
 
 import javax.validation.constraints.NotNull;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class TaskUtils {
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
     public static SubTask findFirstTaskInGroup(SubTask subTaskSample, List<Day> days) {
         Preconditions.checkNotNull(subTaskSample, "subTaskSample can't be null");
         Preconditions.checkNotNull(days, "days list can't be null!");
@@ -44,5 +47,9 @@ public class TaskUtils {
             }
         }
         return last;
+    }
+
+    public static DateTimeFormatter getDateTimeFormatter(){
+        return dtf;
     }
 }

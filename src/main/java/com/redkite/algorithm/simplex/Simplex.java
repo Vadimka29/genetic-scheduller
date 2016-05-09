@@ -15,4 +15,14 @@ public class Simplex implements Algorithm {
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
         return null;
     }
+
+    @Override
+    public double getInitialOptimizedValue() {
+        return 0;
+    }
+
+    @Override
+    public double getFinalOptimizedValue() {
+        return 0;
+    }
 }

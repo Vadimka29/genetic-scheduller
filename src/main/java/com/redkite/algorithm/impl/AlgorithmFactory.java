@@ -27,9 +27,7 @@ public class AlgorithmFactory {
                 new Class[]{Algorithm.class}, new InvocationHandler() {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        System.out.println("Start performance measure");
                         Object result =  method.invoke(algorithmRealization, args);
-                        System.out.println("End performance measure");
                         return result;
                     }
                 });
