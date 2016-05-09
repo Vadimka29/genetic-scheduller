@@ -45,7 +45,7 @@ public class Schedule implements Serializable{
     }
 
     public List<Day> getDays() {
-        return new ArrayList<>(days);
+        return days;
     }
 
     public void setDays(List<Day> days) {
