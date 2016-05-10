@@ -39,7 +39,7 @@ public class SubTask implements Serializable{
 
     @Override
     public String toString() {
-        return String.format("Task[id=%d, name=\'%s\', dur=%.2f]", id, parentTask.getTaskName(), duration);
+        return String.format("Task[id=%d, name=\'%s\', dur=%d]", id, parentTask.getTaskName(), duration);
     }
 
     public String getParentName() {
