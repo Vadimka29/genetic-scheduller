@@ -105,7 +105,7 @@ public class Day implements Serializable {
                 .map(SubTask::toString)
                 .collect(Collectors.toList());
         String tasks = taskList.isEmpty() ? "Free Day" : StringUtils.join(taskList, "\n\t");
-        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", free time: " + getLeftFreeTimeForDay()
+        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", free time: " + freeTime
                 + "]\n\t" + tasks;
 
     }
