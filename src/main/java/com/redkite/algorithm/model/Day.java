@@ -20,11 +20,12 @@ public class Day implements Serializable {
     // how many hours man can work every day without hurt to his health
     private final int MAX_DAY_LIMIT = 12;
     private Random random = new Random();
+    private static final int WANT_TO_WORK_NOT_ABOVE = 5;
 
 
     /**
-     * Create day with passed date with 6h hours limit
-     */
+    * Create day with passed date with 6h hours limit
+    * */
     public Day(LocalDate date) {
         this(date, 6, 0);
     }
@@ -47,9 +48,10 @@ public class Day implements Serializable {
     }
 
 
+
     public void randomlyMoveSubTask(SubTask subTask, Day fromDay) {
         fromDay.getSubTasks().remove(subTask);
-        if (!subTasks.isEmpty()) {
+        if(!subTasks.isEmpty()) {
             int index = random.nextInt(subTasks.size());
             subTask.setExecutionDate(date);
             subTasks.add(index, subTask);
@@ -72,7 +74,7 @@ public class Day implements Serializable {
     }
 
     public void changeLimit(Integer freeTime) {
-        if (freeTime < 24 && freeTime > -1) {
+        if(freeTime < 24 && freeTime > -1) {
             freeTime = freeTime;
         } else {
             throw new IllegalArgumentException("Incorrect number of hours, number can't be greater than 24 or negative");
@@ -90,10 +92,10 @@ public class Day implements Serializable {
 
     public int getLeftFreeTimeForDay() {
         int subTasksSummTime = subTasks.stream().mapToInt(SubTask::getDuration).sum();
-        return MAX_DAY_LIMIT - subTasksSummTime;
+        return WANT_TO_WORK_NOT_ABOVE - subTasksSummTime;
     }
 
-    public int getFreeTime() {
+    public int getFreeTime(){
         return freeTime;
     }
 
@@ -103,7 +105,7 @@ public class Day implements Serializable {
                 .map(SubTask::toString)
                 .collect(Collectors.toList());
         String tasks = taskList.isEmpty() ? "Free Day" : StringUtils.join(taskList, "\n\t");
-        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", " + freeTime
+        return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", free time: " + getLeftFreeTimeForDay()
                 + "]\n\t" + tasks;
 
     }
