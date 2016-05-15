@@ -79,4 +79,13 @@ public class Task implements Serializable {
         this.deadline = deadline;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
+                ", createdDate=" + createdDate +
+                ", duration=" + duration +
+                '}';
+    }
 }
