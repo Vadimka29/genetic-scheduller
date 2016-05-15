@@ -90,8 +90,15 @@ public class Day implements Serializable {
     }
 
 
-    public int getLeftFreeTimeForDay() {
-        int subTasksSummTime = subTasks.stream().mapToInt(SubTask::getDuration).sum();
+//    public int getLeftFreeTimeForDay() {
+//        int subTasksSummTime = subTasks.stream().mapToInt(SubTask::getDuration).sum();
+//        return WANT_TO_WORK_NOT_ABOVE - subTasksSummTime;
+//    }
+    public int getLeftFreeTimeForDay(){
+        int subTasksSummTime = 0;
+        for (SubTask subTask : subTasks) {
+            subTasksSummTime += subTask.getDuration();
+        }
         return WANT_TO_WORK_NOT_ABOVE - subTasksSummTime;
     }
 
@@ -108,5 +115,9 @@ public class Day implements Serializable {
         return "Day[" + TaskUtils.getDateTimeFormatter().format(date) + ", free time: " + getLeftFreeTimeForDay()
                 + "]\n\t" + tasks;
 
+    }
+
+    public static int getWantToWorkNotAbove() {
+        return WANT_TO_WORK_NOT_ABOVE;
     }
 }
