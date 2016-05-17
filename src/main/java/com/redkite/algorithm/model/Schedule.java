@@ -38,10 +38,16 @@ public class Schedule implements Serializable{
             //don't schedule the subtasks after the deadlines
             int subtaskRetrieveDayIndex = getIndexOfDay(subTask.getParentTask().getCreatedDate());
             int subtaskDeadLineDayIndex = getIndexOfDay(subTask.getParentTask().getDeadline());
-            int index = random.nextInt(subtaskDeadLineDayIndex + 1 - subtaskRetrieveDayIndex) + subtaskRetrieveDayIndex;
-            Day day = days.get(index);
-            daysWithTasks.add(day);
-            day.addTask(subTask);
+            boolean isSubTaskAdded = false;
+            while(!isSubTaskAdded) {
+                int index = random.nextInt(subtaskDeadLineDayIndex + 1 - subtaskRetrieveDayIndex) + subtaskRetrieveDayIndex;
+                Day day = days.get(index);
+                if(day.getLeftFreeTimeForDay() - subTask.getDuration() >= 0) {
+                    daysWithTasks.add(day);
+                    day.addTask(subTask);
+                    isSubTaskAdded = true;
+                }
+            }
         }
     }
 

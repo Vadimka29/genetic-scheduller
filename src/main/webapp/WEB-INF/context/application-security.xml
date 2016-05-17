@@ -11,6 +11,7 @@
     <http use-expressions="true">
         <intercept-url pattern="/admin" access="hasAuthority('ADMIN')"/>
         <intercept-url pattern="/calendar" access="hasAuthority('USER')"/>
+        <intercept-url pattern="/cabinet" access="hasAuthority('USER')"/>
         <form-login login-page="/index"
                     login-processing-url="/j_spring_security_check"
                     username-parameter="j_username"

@@ -56,17 +56,21 @@ public class SchedulerModelsConverter {
         Semester semester = new Semester(startDate, endDate);
         Map<DateTime, Long> daysWorkload = new HashMap<>();
         googleEvents.forEach(event -> {
-            long durationInHours = TimeUnit.MILLISECONDS.toHours(event.getEnd().getDateTime().getValue() - event.getStart().getDateTime().getValue());
-            Long currentValue = daysWorkload.get(event.getStart().getDate());
-            currentValue = (currentValue == null) ? 0 : currentValue;
-            daysWorkload.put(event.getStart().getDateTime(), currentValue + durationInHours);
+            //All day events are possible in Google Calendra, so we can't get DateTime (it's null in such case)
+            if(event.getStart().getDateTime() != null || event.getEnd().getDateTime() != null){
+                long durationInHours = TimeUnit.MILLISECONDS.toHours(event.getEnd().getDateTime().getValue() - event.getStart().getDateTime().getValue());
+                Long currentValue = daysWorkload.get(event.getStart().getDate());
+                currentValue = (currentValue == null) ? 0 : currentValue;
+                daysWorkload.put(event.getStart().getDateTime(), currentValue + durationInHours);
+            }
+            //TODO change day limit to 0h in case of all day tasks
         });
         //change all days limit
         daysWorkload.forEach((dateTime, aLong) -> {
             Instant instant = Instant.ofEpochMilli(dateTime.getValue());
             if(daysWorkload.get(dateTime) != null){
                 semester.changeLimit(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate(),
-                        24 - daysWorkload.get(dateTime).intValue());
+                        12 - daysWorkload.get(dateTime).intValue());
             }
         });
         return semester;
