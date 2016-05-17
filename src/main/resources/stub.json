@@ -1,0 +1,26 @@
+{
+  "chartName" : "Performance Chart",
+  "unitY" : "Amount of Tasks",
+  "unitX" : "Execution Time",
+  "series" : [{
+    "name": "GA",
+    "data": [
+      [0, 0],
+      [1, 0.28],
+      [2, 0.25],
+      [3, 0.2],
+      [4, 0.28],
+      [5, 0.28]
+    ]
+  }, {
+    "name": "SA",
+    "data": [
+      [0, 0],
+      [1, 0.50],
+      [2, 0.35],
+      [3, 0.7],
+      [4, 0.50],
+      [5, 0.1]
+    ]
+  }]
+}
