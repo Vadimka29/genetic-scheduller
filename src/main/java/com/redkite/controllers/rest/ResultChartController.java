@@ -90,13 +90,11 @@ public class ResultChartController {
         probabilityAndIterChartBuilder
                 .initialize("ProbabilityChart", "Probability", "Iteration")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getProbabilityAndIterData())
-                .with(((ChartDataSuit) greedyAlgorithm).getProbabilityAndIterData())
                 .build();
 
         probabilityAndTempeChartBuilder
                 .initialize("ProbabilityTemperChart", "Probability", "Temperature")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getProbabilityAndTemperData())
-                .with(((ChartDataSuit) greedyAlgorithm).getProbabilityAndTemperData())
                 .build();
 
         return ChartsHolder.getChartObjectList();

@@ -49,7 +49,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         ChartData temperatureChartData = new ChartData("SimTemperature");
 
         while(temperature > 1){
-
+            temperatureChartData.getData().add(new Double[]{(double)iterationNumber, temperature});
             //generate new shedule
             Schedule newGeneratedSchedule = generateNewSchedule(currentBestSchedule);
             //calculate it's newEnergy
@@ -62,7 +62,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
                 currentBestSchedule = newGeneratedSchedule;
                 currentBestScheduleEnergy = energyOfNewSchedule;
             }
-            temperatureChartData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
+            energyFuncAndIterData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
             System.out.println("temperature: " + temperature);
             System.out.println("currest best schedule enery: " + currentBestScheduleEnergy);
             System.out.println("current energy: " + energyOfNewSchedule);
