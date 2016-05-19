@@ -19,7 +19,9 @@ public class AlgorithmFactory {
             case SIMANNEALING_ALGORITHM:
                 algorithmRealization = new SimulatedAnnealingAlgorithm();
                 break;
-
+            case GREEDY_ALGORITHM:
+                algorithmRealization = new GreedyAlgorithm();
+                break;
         }
         
         return (Algorithm) Proxy.newProxyInstance(algorithmRealization.getClass().getClassLoader(),

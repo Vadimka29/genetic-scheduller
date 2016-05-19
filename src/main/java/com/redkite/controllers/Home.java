@@ -38,11 +38,11 @@ public class Home {
     }
 
 
-    @RequestMapping(value = "/api/stub/chart")
-    public @ResponseBody String getChart() throws IOException {
-        String json = IOUtils.toString(new InputStreamReader(Home.class.getClassLoader().getResourceAsStream("stub.json")));
-        return json;
-    }
+//    @RequestMapping(value = "/api/stub/chart")
+//    public @ResponseBody String getChart() throws IOException {
+//        String json = IOUtils.toString(new InputStreamReader(Home.class.getClassLoader().getResourceAsStream("stub.json")));
+//        return json;
+//    }
 
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

@@ -5,5 +5,6 @@ package com.redkite.algorithm;
  */
 public enum AlgorithmType {
     GENETIC_ALGORITHM,
-    SIMANNEALING_ALGORITHM
+    SIMANNEALING_ALGORITHM,
+    GREEDY_ALGORITHM
 }

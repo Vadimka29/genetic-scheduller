@@ -28,8 +28,8 @@
 
     $(document).ready(function () {
         $.get("/api/stub/chart", function(data) {
-            var chartData = JSON.parse(data);
-            renderChart($("#container"), chartData);
+            // var chartData = JSON.parse(data);
+            renderChart($("#container"), data);
         });
 
 

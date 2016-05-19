@@ -7,14 +7,17 @@ import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.algorithm.model.SubTask;
 import com.redkite.entities.chart.ChartData;
+import com.redkite.entities.chart.ChartObjectBuilder;
 import com.redkite.utils.TaskUtils;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-
-class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
+/**
+ * Created by Vadym on 18.05.2016.
+ */
+public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     private final double INITIAL_TEMPERATURE = 100_000;
     private final double TEMPERATURE_INCREASING_PERCENT = 0.99;
     private final int FAILED_ATTEMPTS_COUNT = 300;
@@ -24,10 +27,10 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
     private double bestScheduleEnergy;
 
     //chartsData
-    private ChartData temperatureAndIterData = new ChartData("SimAnnealing Temperature");
-    private ChartData energyFuncAndIterData = new ChartData("SimAnnealing energy");
-    private ChartData probabilityAndIterData = new ChartData("SimAnnealing Probabability Iter");
-    private ChartData probabilityAndTemperData = new ChartData("SimAnnealing Probability Temp");
+    private ChartData temperatureAndIterData = new ChartData("Greedy Temperature");
+    private ChartData energyFuncAndIterData = new ChartData("Greedy energy");
+    private ChartData probabilityAndIterData = new ChartData("Greedy Probabability Iter");
+    private ChartData probabilityAndTemperData = new ChartData("Greedy Probability Temp");
 
     @Override
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
@@ -42,26 +45,24 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
 
         double temperature = INITIAL_TEMPERATURE;
         int iterationNumber = 0;
+        //chart data
+        ChartData temperatureChartData = new ChartData("SimTemperature");
+
         while(temperature > 1){
-            temperatureAndIterData.getData().add(new Double[]{(double)iterationNumber, temperature});
+
             //generate new shedule
             Schedule newGeneratedSchedule = generateNewSchedule(currentBestSchedule);
             //calculate it's newEnergy
             double energyOfNewSchedule = calculateEnergy(newGeneratedSchedule);
             //calculate new schedule acceptence probability (this value is smaller if temperature is smaller)
             double acceptanceProbability = calculateAcceptanceProbability(currentBestScheduleEnergy, energyOfNewSchedule, temperature);
-
-            probabilityAndIterData.getData().add(new Double[]{(double)iterationNumber, acceptanceProbability});
-            probabilityAndTemperData.getData().add(new Double[]{(double)temperature, acceptanceProbability});
-
             double generatedProbability = random.nextDouble();
             //if acceptanceProbability > Math.random -> accept new schedule
-            if(acceptanceProbability > generatedProbability){
+            if(acceptanceProbability == 1){
                 currentBestSchedule = newGeneratedSchedule;
                 currentBestScheduleEnergy = energyOfNewSchedule;
             }
-            energyFuncAndIterData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
-
+            temperatureChartData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
             System.out.println("temperature: " + temperature);
             System.out.println("currest best schedule enery: " + currentBestScheduleEnergy);
             System.out.println("current energy: " + energyOfNewSchedule);
@@ -73,6 +74,12 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
         }
         bestScheduleEnergy = currentBestScheduleEnergy;
 //        System.out.println(currentBestSchedule);
+
+        new ChartObjectBuilder()
+                .initialize("TemperatureChart", "Iteration", "Temperature")
+                .with(temperatureChartData)
+                .build();
+
         return currentBestSchedule;
     }
 
@@ -84,7 +91,6 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
         List<Day> daysWithTasks = new ArrayList<>(generatedSchedule.getDaysWithTasks());
         int daysCount = generatedSchedule.getDays().size();
         int daysWithTasksCount = generatedSchedule.getDaysWithTasks().size();
-
         //get fromDay (should be a day with the tasks)
         int swapFromDayIndex = random.nextInt(daysWithTasksCount);
         Day fromDay = daysWithTasks.get(swapFromDayIndex);
@@ -179,9 +185,5 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
 
     public ChartData getProbabilityAndIterData() {
         return probabilityAndIterData;
-    }
-
-    public ChartData getProbabilityAndTemperData(){
-        return probabilityAndTemperData;
     }
 }
