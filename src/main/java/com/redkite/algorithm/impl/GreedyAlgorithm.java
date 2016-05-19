@@ -186,4 +186,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     public ChartData getProbabilityAndIterData() {
         return probabilityAndIterData;
     }
+    public ChartData getProbabilityAndTemperData(){
+        return probabilityAndTemperData;
+    }
 }
