@@ -12,8 +12,6 @@ import com.redkite.algorithm.model.SubTask;
 import com.redkite.calendar.CalendarApi;
 import com.redkite.entities.Task;
 import com.redkite.entities.chart.ChartObject;
-import com.redkite.entities.chart.ChartObjectBuilder;
-import com.redkite.entities.chart.ChartsHolder;
 import com.redkite.services.SubjectService;
 import com.redkite.utils.SchedulerModelsConverter;
 import com.redkite.xml.model.Subject;
@@ -28,9 +26,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Vadym on 17.05.2016.
- */
+
 @RestController
 @RequestMapping(value = "/api")
 public class ResultChartController {
@@ -46,6 +42,7 @@ public class ResultChartController {
     private static DateTime semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
     private final int subjectsCount = 1;
 
+    //load data from json and retrieve info from Google calendar
     private void prepareData() throws IOException {
         List<Subject> allSubjects = subjectService.getAllSubjects();
         workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(allSubjects);
@@ -60,6 +57,7 @@ public class ResultChartController {
     }
     @RequestMapping(value = "/stub/chart", method = RequestMethod.GET)
     public List<ChartObject> getChartInfo() throws IOException {
+        List<ChartObject> charts = new ArrayList<>();
         prepareData();
 
         Algorithm simulatedAnnealingAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.SIMANNEALING_ALGORITHM);
@@ -68,35 +66,27 @@ public class ResultChartController {
         Schedule simulatedAnnealingSchedule = simulatedAnnealingAlgorithm.doCalculation(semester, subTasks);
         Schedule greedyAlgorithmSchedule = greedyAlgorithm.doCalculation(semester, subTasks);
 
-        ChartObjectBuilder temperatureAndIterationChartBuilder = new ChartObjectBuilder();
-        ChartObjectBuilder energyAndIterationChartBuilder = new ChartObjectBuilder();
-        ChartObjectBuilder probabilityAndIterChartBuilder = new ChartObjectBuilder();
-        ChartObjectBuilder probabilityAndTempeChartBuilder = new ChartObjectBuilder();
 
-        //build temperature graphic
-        temperatureAndIterationChartBuilder
-                .initialize("TemperatureChart", "Iteration", "Temperature")
+        charts.add(new ChartObject.Builder("TemperatureChart", "Iteration", "Temperature")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getTemperatureAndIterData())
                 .with(((ChartDataSuit) greedyAlgorithm).getTemperatureAndIterData())
-                .build();
+                .build());
 
-        //build energy graphic
-        energyAndIterationChartBuilder
-                .initialize("EnergyChart", "Iteration", "Energy")
+        charts.add(new ChartObject.Builder("EnergyChart", "Iteration", "Energy")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getEnergyFuncAndIterData())
                 .with(((ChartDataSuit) greedyAlgorithm).getEnergyFuncAndIterData())
-                .build();
+                .build());
 
-        probabilityAndIterChartBuilder
-                .initialize("ProbabilityChart", "Probability", "Iteration")
+        charts.add(new ChartObject.Builder("ProbabilityChart", "Iteration", "Probability")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getProbabilityAndIterData())
-                .build();
+                .type("scatter")
+                .build());
 
-        probabilityAndTempeChartBuilder
-                .initialize("ProbabilityTemperChart", "Probability", "Temperature")
+        charts.add(new ChartObject.Builder("ProbabilityTemperChart", "Temperature", "Probability")
                 .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getProbabilityAndTemperData())
-                .build();
+                .type("scatter")
+                .build());
 
-        return ChartsHolder.getChartObjectList();
+        return charts;
     }
 }

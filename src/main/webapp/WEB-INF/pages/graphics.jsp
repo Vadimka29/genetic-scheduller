@@ -6,7 +6,7 @@
     <title>Graphics</title>
 </head>
 <body>
-<div id="container"></div>
+<div class="chart-container"></div>
 <script type="text/javascript" src="<c:url value="/resources/assets/vendor/jquery-2.2.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/assets/vendor/highcharts-4.2.5/js/highcharts.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/assets/project/js/charts.js"/>"></script>

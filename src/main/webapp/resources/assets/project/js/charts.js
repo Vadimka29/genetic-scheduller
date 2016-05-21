@@ -1,6 +1,9 @@
 (function ($) {
     function renderChart(container, chartData) {
         container.highcharts({
+            chart: {
+                type: chartData.type || "line"
+            },
             title: {
                 text: chartData.chartName
             },
@@ -27,12 +30,15 @@
     }
 
     $(document).ready(function () {
-        $.get("/api/stub/chart", function(data) {
-            // var chartData = JSON.parse(data);
-            renderChart($("#container"), data);
+        $.get("/api/stub/chart", function(charts) {
+            var container = $(".chart-container");
+            for(var i = 0; i < charts.length; i++) {
+                var chartDiv = $("<div></div>").appendTo(container);
+                chartDiv.add("chart");
+                renderChart(chartDiv, charts[i]);
+            }
+
         });
-
-
     });
 
 })(jQuery);

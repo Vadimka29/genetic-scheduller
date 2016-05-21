@@ -12,7 +12,7 @@ ${demo.css}
 $(function () {
     $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=range.json&callback=?', function (data) {
 
-        $('#container').highcharts({
+        $('#chart-container').highcharts({
 
             chart: {
                 type: 'arearange',
