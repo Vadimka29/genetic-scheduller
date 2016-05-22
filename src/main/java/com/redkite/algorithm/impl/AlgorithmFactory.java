@@ -2,6 +2,7 @@ package com.redkite.algorithm.impl;
 
 import com.redkite.algorithm.Algorithm;
 import com.redkite.algorithm.AlgorithmType;
+import com.redkite.algorithm.ChartDataSuit;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
