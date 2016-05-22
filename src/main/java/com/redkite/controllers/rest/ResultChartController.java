@@ -37,6 +37,7 @@ public class ResultChartController {
     private static List<Task> workingTasks;
     private static List<SubTask> subTasks;
     private static Semester semester;
+    private static Schedule initialSchedule;
 
     private static DateTime semesterStartDate = new DateTime("2016-09-01T00:00:00+02:00");
     private static DateTime semesterEndDate = new DateTime("2016-12-31T00:00:00+02:00");
@@ -54,6 +55,7 @@ public class ResultChartController {
         workingTasks.forEach(task -> {
             subTasks.addAll(task.toSubTasks());
         });
+        initialSchedule = new Schedule(semester, subTasks);
     }
     @RequestMapping(value = "/stub/chart", method = RequestMethod.GET)
     public List<ChartObject> getChartInfo() throws IOException {
@@ -62,6 +64,8 @@ public class ResultChartController {
 
         Algorithm simulatedAnnealingAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.SIMANNEALING_ALGORITHM);
         Algorithm greedyAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.GREEDY_ALGORITHM);
+        simulatedAnnealingAlgorithm.setInitialSchedule(initialSchedule);
+        greedyAlgorithm.setInitialSchedule(initialSchedule);
 
         Schedule simulatedAnnealingSchedule = simulatedAnnealingAlgorithm.doCalculation(semester, subTasks);
         Schedule greedyAlgorithmSchedule = greedyAlgorithm.doCalculation(semester, subTasks);

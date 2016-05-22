@@ -7,7 +7,6 @@ import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.algorithm.model.SubTask;
 import com.redkite.entities.chart.ChartData;
-import com.redkite.entities.chart.ChartObjectBuilder;
 import com.redkite.utils.TaskUtils;
 import org.apache.commons.lang3.SerializationUtils;
 
@@ -25,6 +24,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     private final Random random = new Random();
     private double initialScheduleEnergy;
     private double bestScheduleEnergy;
+    private Schedule initialSchedule;
 
     //chartsData
     private ChartData temperatureAndIterData = new ChartData("Greedy Temperature");
@@ -35,7 +35,10 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     @Override
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
         //generate initial schedule
-        Schedule initialSchedule = new Schedule(semester, subTasks);
+        //generate initial schedule
+        if(initialSchedule == null) {
+            initialSchedule = new Schedule(semester, subTasks);
+        }
         initialScheduleEnergy = calculateEnergy(initialSchedule);
 //        System.out.println(initialSchedule);
 
@@ -74,11 +77,6 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         }
         bestScheduleEnergy = currentBestScheduleEnergy;
 //        System.out.println(currentBestSchedule);
-
-        new ChartObjectBuilder()
-                .initialize("TemperatureChart", "Iteration", "Temperature")
-                .with(temperatureChartData)
-                .build();
 
         return currentBestSchedule;
     }
@@ -188,5 +186,9 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     }
     public ChartData getProbabilityAndTemperData(){
         return probabilityAndTemperData;
+    }
+
+    public void setInitialSchedule(Schedule initialSchedule) {
+        this.initialSchedule = initialSchedule;
     }
 }

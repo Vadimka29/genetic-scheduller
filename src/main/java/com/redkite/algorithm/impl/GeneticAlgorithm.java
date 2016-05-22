@@ -14,6 +14,7 @@ public class GeneticAlgorithm implements Algorithm {
     private List<Schedule> bestChromosomes;
     private Integer populationSize = 30;
     private Integer iteration = 0;
+    private Schedule initialSchedule;
 
 
 
@@ -52,6 +53,8 @@ public class GeneticAlgorithm implements Algorithm {
         }
     }
 
-
-
+    @Override
+    public void setInitialSchedule(Schedule initialSchedule) {
+        this.initialSchedule = initialSchedule;
+    }
 }

@@ -22,6 +22,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
     private final Random random = new Random();
     private double initialScheduleEnergy;
     private double bestScheduleEnergy;
+    private Schedule initialSchedule;
 
     //chartsData
     private ChartData temperatureAndIterData = new ChartData("SimAnnealing Temperature");
@@ -32,7 +33,9 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
     @Override
     public Schedule doCalculation(Semester semester, List<SubTask> subTasks) {
         //generate initial schedule
-        Schedule initialSchedule = new Schedule(semester, subTasks);
+        if(initialSchedule == null) {
+            initialSchedule = new Schedule(semester, subTasks);
+        }
         initialScheduleEnergy = calculateEnergy(initialSchedule);
 //        System.out.println(initialSchedule);
 
@@ -183,5 +186,9 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
 
     public ChartData getProbabilityAndTemperData(){
         return probabilityAndTemperData;
+    }
+
+    public void setInitialSchedule(Schedule initialSchedule) {
+        this.initialSchedule = initialSchedule;
     }
 }

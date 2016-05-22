@@ -19,4 +19,6 @@ public interface Algorithm {
      * @return optimized value of estimated function(genetic function/energy function)
      */
     double getFinalOptimizedValue();
+
+    void setInitialSchedule(Schedule initialSchedule);
 }
