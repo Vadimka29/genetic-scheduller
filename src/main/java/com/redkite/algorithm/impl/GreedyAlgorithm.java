@@ -7,16 +7,13 @@ import com.redkite.algorithm.model.Schedule;
 import com.redkite.algorithm.model.Semester;
 import com.redkite.algorithm.model.SubTask;
 import com.redkite.entities.chart.ChartData;
-import com.redkite.entities.chart.ChartObjectBuilder;
 import com.redkite.utils.TaskUtils;
 import org.apache.commons.lang3.SerializationUtils;
 
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-/**
- * Created by Vadym on 18.05.2016.
- */
+
 public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     private final double INITIAL_TEMPERATURE = 100_000;
     private final double TEMPERATURE_INCREASING_PERCENT = 0.99;
@@ -46,45 +43,45 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         double temperature = INITIAL_TEMPERATURE;
         int iterationNumber = 0;
         //chart data
-        ChartData temperatureChartData = new ChartData("SimTemperature");
 
-        while(temperature > 1){
-            temperatureChartData.getData().add(new Double[]{(double)iterationNumber, temperature});
+
+        while (temperature > 1) {
+            temperatureAndIterData.getData().add(new Double[]{(double) iterationNumber, temperature});
+
             //generate new shedule
             Schedule newGeneratedSchedule = generateNewSchedule(currentBestSchedule);
             //calculate it's newEnergy
             double energyOfNewSchedule = calculateEnergy(newGeneratedSchedule);
             //calculate new schedule acceptence probability (this value is smaller if temperature is smaller)
             double acceptanceProbability = calculateAcceptanceProbability(currentBestScheduleEnergy, energyOfNewSchedule, temperature);
+
+            probabilityAndIterData.getData().add(new Double[]{(double) iterationNumber, acceptanceProbability});
+            probabilityAndTemperData.getData().add(new Double[]{(double) temperature, acceptanceProbability});
+
             double generatedProbability = random.nextDouble();
             //if acceptanceProbability > Math.random -> accept new schedule
-            if(acceptanceProbability == 1){
+            if (acceptanceProbability == 1) {
                 currentBestSchedule = newGeneratedSchedule;
                 currentBestScheduleEnergy = energyOfNewSchedule;
             }
-            energyFuncAndIterData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
+            energyFuncAndIterData.getData().add(new Double[]{(double) iterationNumber, currentBestScheduleEnergy});
             System.out.println("temperature: " + temperature);
             System.out.println("currest best schedule enery: " + currentBestScheduleEnergy);
             System.out.println("current energy: " + energyOfNewSchedule);
             System.out.println("\n\n");
 
             //cool temperature
-            temperature =  coolSystemTemperature(temperature);
-            iterationNumber ++;
+            temperature = coolSystemTemperature(temperature);
+            iterationNumber++;
         }
         bestScheduleEnergy = currentBestScheduleEnergy;
-//        System.out.println(currentBestSchedule);
 
-        new ChartObjectBuilder()
-                .initialize("TemperatureChart", "Iteration", "Temperature")
-                .with(temperatureChartData)
-                .build();
 
         return currentBestSchedule;
     }
 
 
-    private Schedule generateNewSchedule(Schedule currentSchedule){
+    private Schedule generateNewSchedule(Schedule currentSchedule) {
         Schedule generatedSchedule = SerializationUtils.clone(currentSchedule);
         //days are already sorted
         List<Day> days = generatedSchedule.getDays();
@@ -101,7 +98,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
 
         boolean subtaskInsertedSuccessfully = false;
         int attemp_counter = 0;
-        while (!subtaskInsertedSuccessfully && attemp_counter <= FAILED_ATTEMPTS_COUNT){
+        while (!subtaskInsertedSuccessfully && attemp_counter <= FAILED_ATTEMPTS_COUNT) {
             //hard stop criteria, subtask can't be scheduled before retrieve date
             int subTaskRetrieveDayIndex = generatedSchedule.getIndexOfDay(movedSubtask.getParentTask().getCreatedDate());
             //hard stop criteria, subtask can't be scheduled after deadline date
@@ -109,27 +106,27 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
             int swapToDayIndex = random.nextInt(subTaskDeadLineDayIndex + 1 - subTaskRetrieveDayIndex) + subTaskRetrieveDayIndex;
             Day toDay = days.get(swapToDayIndex);
             //hard stop criteria(we can't exceed 12 hours per day)
-            if(toDay.getLeftFreeTimeForDay() - movedSubtask.getDuration() >= 0){
+            if (toDay.getLeftFreeTimeForDay() - movedSubtask.getDuration() >= 0) {
                 //if toDay had no subtask - add this day to daysWithTasks
-                if(toDay.getSubTasks().isEmpty()){
+                if (toDay.getSubTasks().isEmpty()) {
                     generatedSchedule.getDaysWithTasks().add(toDay);
                 }
                 toDay.randomlyMoveSubTask(movedSubtask, fromDay);
                 //remove day from daysWithSubtask if there is no subtask here now
-                if(fromDay.getSubTasks().isEmpty()){
+                if (fromDay.getSubTasks().isEmpty()) {
                     generatedSchedule.getDaysWithTasks().remove(fromDay);
                 }
                 subtaskInsertedSuccessfully = true;
             }
-            attemp_counter ++;
+            attemp_counter++;
         }
         return generatedSchedule;
     }
 
-    private double calculateEnergy(Schedule schedule){
+    private double calculateEnergy(Schedule schedule) {
         List<SubTask> lastSubtasks = getJustLastSubtaskForEveryTask(schedule.getAllScheduledSubTasks(), schedule.getDays());
         int finishDaysSummWithPriority = 0;
-        if(!lastSubtasks.isEmpty()){
+        if (!lastSubtasks.isEmpty()) {
             finishDaysSummWithPriority = (int) ChronoUnit.DAYS.between(schedule.getStart(), lastSubtasks.get(0).getExecutionDate());
             //iterate just through the last subtask of every task
             for (SubTask subTask : lastSubtasks) {
@@ -141,10 +138,10 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         for (Day day : schedule.getDays()) {
             dayWorkLoadSumm += day.getDayWorkLoad();
         }
-        return finishDaysSummWithPriority * (dayWorkLoadSumm/schedule.getDays().size());
+        return finishDaysSummWithPriority * (dayWorkLoadSumm / schedule.getDays().size());
     }
 
-    private List<SubTask> getJustLastSubtaskForEveryTask(List<SubTask> subTasks, List<Day> days){
+    private List<SubTask> getJustLastSubtaskForEveryTask(List<SubTask> subTasks, List<Day> days) {
         Set<SubTask> lastSubtasks = new HashSet<>();
         for (SubTask subTask : subTasks) {
             lastSubtasks.add(TaskUtils.findLastTaskInGroup(subTask, days));
@@ -152,17 +149,17 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         return new ArrayList<>(lastSubtasks);
     }
 
-    private double calculateAcceptanceProbability(double currentEnergy, double newEnergy, double temperature){
+    private double calculateAcceptanceProbability(double currentEnergy, double newEnergy, double temperature) {
         //if the new solution is better, accept it
-        if(newEnergy <= currentEnergy){
+        if (newEnergy <= currentEnergy) {
             return 1;
         }
         //if the new solution is worse, calculate an acceptance probability
-        return Math.exp( -((newEnergy - currentEnergy)/temperature) );
+        return Math.exp(-((newEnergy - currentEnergy) / temperature));
     }
 
-    private double coolSystemTemperature(double currentTemperature){
-        return currentTemperature*TEMPERATURE_INCREASING_PERCENT;
+    private double coolSystemTemperature(double currentTemperature) {
+        return currentTemperature * TEMPERATURE_INCREASING_PERCENT;
     }
 
     @Override
@@ -186,7 +183,8 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
     public ChartData getProbabilityAndIterData() {
         return probabilityAndIterData;
     }
-    public ChartData getProbabilityAndTemperData(){
+
+    public ChartData getProbabilityAndTemperData() {
         return probabilityAndTemperData;
     }
 }
