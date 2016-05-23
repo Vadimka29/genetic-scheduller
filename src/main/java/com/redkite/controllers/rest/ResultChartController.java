@@ -46,7 +46,7 @@ public class ResultChartController {
     //load data from json and retrieve info from Google calendar
     private void prepareData() throws IOException {
         List<Subject> allSubjects = subjectService.getAllSubjects();
-        allSubjects = allSubjects.subList(0, 3);
+        allSubjects = allSubjects.subList(0, 5);
         workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(allSubjects);
         List<Event> events = calendarApi.getEventsBetweenDates(semesterStartDate, semesterEndDate);
         semester = SchedulerModelsConverter.convertGoogleEventsToSemester(events,
@@ -65,16 +65,19 @@ public class ResultChartController {
 
         Algorithm simulatedAnnealingAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.SIMANNEALING_ALGORITHM);
         Algorithm greedyAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.GREEDY_ALGORITHM);
+        Algorithm geneticAlgorithm = AlgorithmFactory.retrieveAlgorithmRealization(AlgorithmType.GENETIC_ALGORITHM);
         simulatedAnnealingAlgorithm.setInitialSchedule(initialSchedule);
         greedyAlgorithm.setInitialSchedule(initialSchedule);
+        geneticAlgorithm.setInitialSchedule(initialSchedule);
 
         Schedule simulatedAnnealingSchedule = simulatedAnnealingAlgorithm.doCalculation(semester, subTasks);
         Schedule greedyAlgorithmSchedule = greedyAlgorithm.doCalculation(semester, subTasks);
+        geneticAlgorithm.doCalculation(semester, subTasks);
 
-
-        charts.add(new ChartObject.Builder("TemperatureChart", "Iteration", "Temperature")
-                .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getTemperatureAndIterData())
-                .with(((ChartDataSuit) greedyAlgorithm).getTemperatureAndIterData())
+        charts.add(new ChartObject.Builder("Fitness Chart", "Iteration", "Fitness")
+                .with(((ChartDataSuit) geneticAlgorithm).getFitnessAndIterationData())
+                .with(((ChartDataSuit) simulatedAnnealingAlgorithm).getEnergyFuncAndIterData())
+                .with(((ChartDataSuit) greedyAlgorithm).getEnergyFuncAndIterData())
                 .build());
 
         charts.add(new ChartObject.Builder("EnergyChart", "Iteration", "Energy")

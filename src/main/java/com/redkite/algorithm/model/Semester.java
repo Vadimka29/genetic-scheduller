@@ -19,7 +19,11 @@ public class Semester implements Serializable {
         this.end = end;
         fillDays();
     }
-
+    public Semester(List<Day> daysWithTasks) {
+        this.start = daysWithTasks.get(0).getDate();
+        this.end = daysWithTasks.get(daysWithTasks.size() -1).getDate();
+        this.days = daysWithTasks;
+    }
 
     public int getNumberOfDays() {
         return (int) ChronoUnit.DAYS.between(start, end) + 1;

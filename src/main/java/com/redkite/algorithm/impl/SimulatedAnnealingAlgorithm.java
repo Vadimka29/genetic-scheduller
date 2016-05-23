@@ -18,7 +18,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
     private final double INITIAL_TEMPERATURE = 10_000;
     private final double TEMPERATURE_INCREASING_PERCENT = 0.9;
     private final int FAILED_ATTEMPTS_COUNT = 300;
-
+    private final int WARM_SHIFT = 500;
     private final Random random = new Random();
     private double initialScheduleEnergy;
     private double bestScheduleEnergy;
@@ -45,7 +45,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
 
         double temperature = INITIAL_TEMPERATURE;
         int iterationNumber = 0;
-        while (temperature > 1 && iterationNumber <= 15000) {
+        while (temperature > 1 && iterationNumber <= 3000) {
             temperatureAndIterData.getData().add(new Double[]{(double) iterationNumber, temperature});
             //generate new shedule
             Schedule newGeneratedSchedule = generateNewSchedule(currentBestSchedule);
@@ -71,7 +71,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
 //            System.out.println("\n\n");
 
             //cool temperature
-            if(iterationNumber >= 2000) {
+            if(iterationNumber >= WARM_SHIFT) {
                 temperature = coolSystemTemperature(temperature, iterationNumber);
             }
             iterationNumber++;
@@ -161,7 +161,7 @@ class SimulatedAnnealingAlgorithm implements Algorithm, ChartDataSuit {
     }
 
     private double coolSystemTemperature(double currentTemperature, int iterationNumber) {
-        return INITIAL_TEMPERATURE * Math.pow(TEMPERATURE_INCREASING_PERCENT, Math.pow(iterationNumber - 2000, 0.5));
+        return INITIAL_TEMPERATURE * Math.pow(TEMPERATURE_INCREASING_PERCENT, Math.pow(iterationNumber - WARM_SHIFT, 0.5));
     }
 
     @Override

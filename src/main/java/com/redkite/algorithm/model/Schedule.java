@@ -3,6 +3,7 @@ package com.redkite.algorithm.model;
 
 import com.google.api.client.util.Preconditions;
 import com.redkite.entities.Task;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
@@ -20,10 +21,18 @@ public class Schedule implements Serializable{
 
     //TODO maybe better pass Tasks
     public Schedule(Semester semester, List<SubTask> subTasks) {
-        this.semester = semester;
+        this.semester = SerializationUtils.clone(semester);
         createScheduleForSemester(subTasks);
     }
 
+    public Schedule(List<Day> daysWithTasks) {
+        this.semester = new Semester(daysWithTasks);
+        for (Day daysWithTask : daysWithTasks) {
+            for (SubTask subTask : daysWithTask.getSubTasks()) {
+                tasks.add(subTask.getParentTask());
+            }
+        }
+    }
     /**
      * Fill semester with subtask in random positions and remember all unique task
      * */
@@ -98,6 +107,10 @@ public class Schedule implements Serializable{
 
     public LocalDate getEnd() {
         return semester.getEnd();
+    }
+
+    public Semester getSemester() {
+        return semester;
     }
 
     public int getNumberOfDays() {

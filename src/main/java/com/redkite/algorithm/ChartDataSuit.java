@@ -2,15 +2,26 @@ package com.redkite.algorithm;
 
 import com.redkite.entities.chart.ChartData;
 
-/**
- * Created by Vadym on 20.05.2016.
- */
+
 public interface ChartDataSuit {
-    ChartData getTemperatureAndIterData();
 
-    ChartData getEnergyFuncAndIterData();
+    default ChartData getTemperatureAndIterData() {
+        return new ChartData("Empty");
+    }
 
-    ChartData getProbabilityAndIterData();
+    default ChartData getEnergyFuncAndIterData() {
+        return new ChartData("Empty");
+    }
 
-    ChartData getProbabilityAndTemperData();
+    default ChartData getProbabilityAndIterData() {
+        return new ChartData("Empty");
+    }
+
+    default ChartData getProbabilityAndTemperData() {
+        return new ChartData("Empty");
+    }
+
+    default ChartData getFitnessAndIterationData() {
+        return new ChartData("Empty");
+    }
 }

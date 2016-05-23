@@ -68,6 +68,22 @@ public class Day implements Serializable {
         return subTasks;
     }
 
+    //remove all sub tasks
+    public void freeDay() {
+        this.subTasks = new ArrayList<>();
+    }
+
+    public SubTask remove(int index) {
+        return subTasks.remove(index);
+    }
+
+    public SubTask removeRandomly() {
+        if(subTasks.size() != 0) {
+            return remove(random.nextInt(subTasks.size()));
+        }
+        return null;
+    }
+
     public boolean addTask(SubTask subTask) {
         subTask.setExecutionDate(date);
         return subTasks.add(subTask);
