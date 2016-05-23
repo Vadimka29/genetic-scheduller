@@ -17,8 +17,8 @@ import java.util.*;
  * Created by Vadym on 18.05.2016.
  */
 public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
-    private final double INITIAL_TEMPERATURE = 100_000;
-    private final double TEMPERATURE_INCREASING_PERCENT = 0.99;
+    private final double INITIAL_TEMPERATURE = 10_000;
+    private final double TEMPERATURE_INCREASING_PERCENT = 0.9;
     private final int FAILED_ATTEMPTS_COUNT = 300;
 
     private final Random random = new Random();
@@ -51,7 +51,7 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         //chart data
         ChartData temperatureChartData = new ChartData("SimTemperature");
 
-        while(temperature > 1){
+        while(temperature > 1 && iterationNumber <= 15000){
             temperatureChartData.getData().add(new Double[]{(double)iterationNumber, temperature});
             //generate new shedule
             Schedule newGeneratedSchedule = generateNewSchedule(currentBestSchedule);
@@ -66,13 +66,15 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
                 currentBestScheduleEnergy = energyOfNewSchedule;
             }
             energyFuncAndIterData.getData().add(new Double[]{(double)iterationNumber, currentBestScheduleEnergy});
-            System.out.println("temperature: " + temperature);
-            System.out.println("currest best schedule enery: " + currentBestScheduleEnergy);
-            System.out.println("current energy: " + energyOfNewSchedule);
-            System.out.println("\n\n");
+//            System.out.println("temperature: " + temperature);
+//            System.out.println("currest best schedule enery: " + currentBestScheduleEnergy);
+//            System.out.println("current energy: " + energyOfNewSchedule);
+//            System.out.println("\n\n");
 
             //cool temperature
-            temperature =  coolSystemTemperature(temperature);
+            if(iterationNumber >= 2000) {
+                temperature = coolSystemTemperature(temperature, iterationNumber);
+            }
             iterationNumber ++;
         }
         bestScheduleEnergy = currentBestScheduleEnergy;
@@ -159,8 +161,8 @@ public class GreedyAlgorithm implements Algorithm, ChartDataSuit {
         return Math.exp( -((newEnergy - currentEnergy)/temperature) );
     }
 
-    private double coolSystemTemperature(double currentTemperature){
-        return currentTemperature*TEMPERATURE_INCREASING_PERCENT;
+    private double coolSystemTemperature(double currentTemperature, int iterationNumber) {
+        return INITIAL_TEMPERATURE * Math.pow(TEMPERATURE_INCREASING_PERCENT, Math.pow(iterationNumber - 2000, 0.5));
     }
 
     @Override

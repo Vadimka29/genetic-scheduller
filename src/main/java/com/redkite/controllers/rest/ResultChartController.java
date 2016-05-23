@@ -46,6 +46,7 @@ public class ResultChartController {
     //load data from json and retrieve info from Google calendar
     private void prepareData() throws IOException {
         List<Subject> allSubjects = subjectService.getAllSubjects();
+        allSubjects = allSubjects.subList(0, 3);
         workingTasks = SchedulerModelsConverter.convertFromSubjectsModelToTask(allSubjects);
         List<Event> events = calendarApi.getEventsBetweenDates(semesterStartDate, semesterEndDate);
         semester = SchedulerModelsConverter.convertGoogleEventsToSemester(events,
