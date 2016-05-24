@@ -57,3 +57,15 @@ body {
     }
 }
 
+#login-form {
+    width: 350px;
+    background: #FFF;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.login-controls {
+    padding-top: 15px;
+    border-top: 2px solid #CCC;
+}
+

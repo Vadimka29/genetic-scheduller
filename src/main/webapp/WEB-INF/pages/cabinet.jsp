@@ -31,7 +31,7 @@
                             <label for="algorithm"></label>
                             <select id="algorithm" class="selectpicker">
                                 <option>Генетичний алгоритм</option>
-                                <option>Метод гілок та меж</option>
+                                <option>Алгоритм імітації відпалу</option>
                             </select>
                         </div>
                     </div>
@@ -61,23 +61,21 @@
     <div class="cabinet__new-task" style="display: none">
         <form class="new-task jsForm">
             <div class="form-group">
-                <label for="taskName">Task</label>
+                <label for="taskName">Задача</label>
                 <input type="text" name="taskName" class="form-control" id="taskName" placeholder="Physics">
             </div>
             <div class="form-group">
-                <label for="deadline">Due date</label>
+                <label for="deadline">Крайня дата</label>
                 <input type="date" name="deadline" class="form-control" id="deadline" placeholder="10/10/2016">
             </div>
             <div class="form-group">
-                <label for="duration">Duration</label>
+                <label for="duration">Час на виконання</label>
                 <input type="text" name="duration" class="form-control" id="duration">
             </div>
             <div class="form-group">
-                <label for="hoursPerDay">Hours Per Day</label>
+                <label for="hoursPerDay">Годин/День</label>
                 <input type="text" name="hoursPerDay" class="form-control" id="hoursPerDay">
             </div>
-
-
             <div>
                 <input class="btn btn-success" type="submit" value="Додати задачу">
                 <input class="btn btn-danger b-close" type="button" value="Відміна">
