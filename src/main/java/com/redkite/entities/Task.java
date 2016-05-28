@@ -20,11 +20,11 @@ public class Task implements Serializable {
     private static final int MAX_PRIORITY = 25;
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "task_name")
+    @Column(name = "task_name", unique = true)
     private String taskName;
 
     //TODO refactor type
@@ -43,9 +43,9 @@ public class Task implements Serializable {
     @Column(name = "duration")
     private Integer duration;
 
-//    @ManyToOne
-//    @JoinColumn(name="id", nullable=false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 
     public List<SubTask> toSubTasks() {
         List<SubTask> subTasks = new ArrayList<>();

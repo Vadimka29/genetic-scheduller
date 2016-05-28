@@ -33,6 +33,13 @@
             });
         });
 
+        $(".jsSignUp").click(function() {
+            $("#reg-form").bPopup({
+                speed: 450,
+                transition: 'slideDown'
+            });
+        })
+
     });
 
 })(jQuery);

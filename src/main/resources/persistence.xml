@@ -39,11 +39,11 @@
         </property>
     </bean>
 
-    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
 
     <bean id="myUserDetailsService" class="com.redkite.security.CustomUserDetailsService"/>
 
-    <tx:annotation-driven transaction-manager="txManager"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <jpa:repositories base-package="com.redkite.repositories"/>
 

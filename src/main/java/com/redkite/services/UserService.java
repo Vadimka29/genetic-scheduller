@@ -5,4 +5,5 @@ import com.redkite.entities.User;
 
 public interface UserService {
     User getUserByLogin(String login);
+    public User save(User user);
 }

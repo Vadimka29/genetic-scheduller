@@ -3,6 +3,7 @@ package com.redkite.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -10,8 +11,8 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "first_name")
@@ -32,8 +33,8 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-//    @OneToMany(mappedBy="user")
-//    private List<Task> tasks;
+    @OneToMany(mappedBy="user")
+    private List<Task> tasks;
 
 
     public User(String login, String password) {
