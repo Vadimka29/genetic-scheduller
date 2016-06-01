@@ -43,6 +43,7 @@
                         <tr>
                             <th>№</th>
                             <th>Задача</th>
+                            <th>Пріоритет</th>
                             <th>Час на виконання</th>
                             <th>Крайня дата</th>
                             <th>Дата отримання</th>
@@ -75,6 +76,24 @@
             <div class="form-group">
                 <label for="hoursPerDay">Годин/День</label>
                 <input type="text" name="hoursPerDay" class="form-control" id="hoursPerDay">
+            </div>
+            <div class="form-group float-fix last-group">
+                <div class="left-input">
+                    <label for="difficulty">Складність завднаня</label>
+                    <select id="difficulty" name="difficulty" class="selectpicker">
+                        <option value="1">Легка робота</option>
+                        <option value="3">Середня робота</option>
+                        <option value="5">Складна робота</option>
+                    </select>
+                </div>
+                <div class="right-input">
+                    <label for="priority">Важливість завднаня</label>
+                    <select id="priority" name="priority" class="selectpicker">
+                        <option value="1">Низька</option>
+                        <option value="3">Нормальна</option>
+                        <option value="5">Висока</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <input class="btn btn-success" type="submit" value="Додати задачу">

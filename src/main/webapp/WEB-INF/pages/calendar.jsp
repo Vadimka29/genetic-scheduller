@@ -45,7 +45,8 @@
 <script src="<c:url value="/resources/assets/vendor/jquery-2.2.1.min.js"/>"></script>
 <script src="<c:url value="/resources/assets/vendor/bootstrap-3.3.6-dist/js/bootstrap.js"/>"></script>
 <script src='http://momentjs.com/downloads/moment.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.7.0/fullcalendar.min.js'></script>
+<script src="<c:url value="/resources/assets/vendor/fullcalendar-2.7.2/fullcalendar.js"/>"></script>
+<script src="<c:url value="/resources/assets/vendor/fullcalendar-2.7.2/lang-all.js"/>"></script>
 <script src="<c:url value="/resources/assets/project/js/user-calendar.js"/>"></script>
 </body>
 </html>

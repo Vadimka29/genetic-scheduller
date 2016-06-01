@@ -10,10 +10,14 @@ import com.redkite.algorithm.model.Semester;
 import com.redkite.algorithm.model.SubTask;
 import com.redkite.calendar.CalendarApi;
 import com.redkite.entities.Task;
+import com.redkite.entities.User;
 import com.redkite.services.SubjectService;
+import com.redkite.services.UserService;
 import com.redkite.utils.SchedulerModelsConverter;
 import com.redkite.xml.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +39,9 @@ public class CalendarController {
 
     @Autowired
     private CalendarApi calendarApi;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SubjectService subjectService;
@@ -64,5 +71,12 @@ public class CalendarController {
         });
         Schedule schedule = simulatedAnnealing.doCalculation(semester, subTasks);
         return schedule.getAllScheduledSubTasks();
+    }
+
+
+    public User getCurrUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String login = auth.getName();
+        return userService.getUserByLogin(login);
     }
 }

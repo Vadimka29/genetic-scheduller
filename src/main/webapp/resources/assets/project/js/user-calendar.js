@@ -7,6 +7,7 @@ $(document).ready(function () {
         hideLoading();
 
         $('#calendar').fullCalendar({
+            lang: 'uk',
             theme: true,
             weekends: true,
             editable: true,
@@ -24,15 +25,15 @@ $(document).ready(function () {
     function getOptimizedScheduleFromServer(callback) {
         $.get("/api/test-schedule", function (data, status) {
             var events = [];
-            for(var i = 0; i < data.length; i ++){
+            for (var i = 0; i < data.length; i++) {
                 var eventName = data[i].parentName + " [duration: " + data[i].duration + "h]";
-                var eventObject = {id: i ,title: eventName, start: new Date(data[i].executionDate)};
+                var eventObject = {id: i, title: eventName, start: new Date(data[i].executionDate)};
                 events.push(eventObject);
             }
             var map = new Map();
-            for(var i = 0; i < data.length; i++){
+            for (var i = 0; i < data.length; i++) {
                 var value;
-                if(map.get((data[i].executionDate)) == undefined){
+                if (map.get((data[i].executionDate)) == undefined) {
                     value = 0;
                     map.set(data[i].executionDate, value);
                 } else {
@@ -49,6 +50,7 @@ $(document).ready(function () {
         $("#calendar").fadeOut();
         $(".sk-circle").css('display', 'block');
     }
+
     function hideLoading() {
         $("#calendar").fadeIn();
         $(".sk-circle").css('display', 'none');

@@ -35,6 +35,7 @@
         });
 
         btnGen.on("click", function () {
+
             $.ajax({
                 headers: {
                     'Accept': 'application/json',
@@ -43,9 +44,9 @@
                 'type': 'POST',
                 'url': "/cabinet/generate",
                 'data': JSON.stringify(tasks),
-                'dataType': 'json',
+                'dataType': 'text',
                 'success': function (data) {
-                    alert("Success!!");
+                    location.href = '/calendar';
                 }
             });
 
@@ -54,6 +55,8 @@
         $(".jsForm").submit(function (event) {
             event.preventDefault();
             var task = $(this).serializeFormJSON();
+            task.priority = task.difficulty * task.priority;
+            task.difficulty = undefined;
             tasks.push(task);
             task.createdDate = moment(new Date()).format("YYYY-MM-DD");
             console.log(task);
@@ -61,6 +64,7 @@
                 "<tr>" +
                 "<td>" + (++counter) + "</td>" +
                 "<td>" + task.taskName + "</td>" +
+                "<td>" + task.priority + "</td>" +
                 "<td>" + task.duration + "</td>" +
                 "<td>" + moment(new Date()).format("DD/MM/YYYY") + "</td>" +
                 "<td>" + moment(new Date(task.deadline)).format("DD/MM/YYYY") + "</td>" +

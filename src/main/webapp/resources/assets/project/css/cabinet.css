@@ -11,7 +11,34 @@
     margin-top: 30px;
 }
 .cabinet__new-task {
-    width: 350px;
+    width: 490px;
     background: #FFF;
     padding: 15px;
+    border-radius: 5px;
+}
+
+.float-fix::after {
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    content: '.';
+    display: block;
+}
+
+.left-input {
+    float: left;
+}
+.right-input {
+    float: left;
+    padding-left: 20px;
+}
+
+.last-group {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #CCC;
+}
+
+/*TODO refactor*/
+.last-group label {
+    display: block;
 }
